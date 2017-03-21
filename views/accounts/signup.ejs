@@ -1,0 +1,71 @@
+<% layout('layout') -%>
+
+<script type="text/javascript">
+function validateForm() {
+
+ var ln = document.forms["regForm"]["name"].value;
+
+ if (ln == "") {
+     alert("Name must be filled out correctly");
+     return false;
+ }
+var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[09]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+//var re = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i;
+  var email=document.forms["regForm"]["email"].value;
+ if(!re.test(email)){
+     alert(" please enter correct Email ID!!");
+     return false;
+ }
+
+  var pass1=document.forms["regForm"]["password"].value;
+  var pass2=document.forms["regForm"]["password2"].value;
+if(pass1 == pass2)
+  {
+
+    return true;
+  }else{
+      alert("Password do not match!");
+      return false;
+  }
+
+}
+</script>
+
+
+<div class="row">
+  <div class="col-lg-6 col-md-offset-3">
+
+    <% if (errors.length>0) { %>
+     <div class="alert alert-danger alert-dismissible">
+       <button  type="button" class="close" data-dismmiss="alert" arial-label="Close">
+         <span aria-hidden="true">&times;</span>
+       </button>
+       <%= errors %>
+     </div>
+
+  <%  } %>
+    <form method = "post" name="regForm">
+
+      <h1> Signup </h1>
+
+    <div class="form-group">
+      <label="name">Name: </label>
+      <input type= "text" id="flname" class="form-control" name ="name" required>
+    </div>
+    <div class="form-group">
+      <label="name">Email: </label>
+      <input type= "email" id="eemail" class="form-control" name ="email" required>
+    </div>
+    <div class="form-group">
+      <label="name">Password: </label>
+      <input type="password" id="pass" class="form-control" name= "password" required>
+    </div>
+    <div class="form-group">
+      <label="name">Confirm Password: </label>
+      <input type="password" id="pass2" class="form-control" name= "password2" required>
+    </div>
+
+    <button type="submit" class="btn btn-success" onclick="validateForm()">Submit</button>
+    </form>
+  </div>
+</div>
