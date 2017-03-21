@@ -1,5 +1,5 @@
 var router = require('express').Router();
-var Category = require('../models/category');
+//var Category = require('../models/category');
 var Template = require('../models/template');
 var Language = require('../models/language');
 
