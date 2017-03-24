@@ -1,7 +1,11 @@
 <% layout('layout') -%>
+<head>
+    <link rel="stylesheet" type="text/css" media="screen" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.10.0/css/bootstrap-select.min.css">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
 
+  </head>
 
-   <div class="container">
+ <div class="container">
       <div class="row row-content">
           <div class=""col-xs-12 col-sm-6>
               <ul class="nav nav-tabs" role="tablist">
@@ -10,13 +14,13 @@
                      role="tab" data-toggle="tab" id = "ansi_c" onclick="myfunc()" >C</a></li>
                     <li role="presentation"><a href="#cpp"
                      aria-controls="cpp" role="tab"
-                     data-toggle="tab" id = "cpp_11" onclick="myfunc()">C++</a></li>
+                     data-toggle="tab" id = "cpp_11" onclick="myfunc()">CPP</a></li>
                     <li role="presentation"><a href="#java"
                      aria-controls="java" role="tab"
                      data-toggle="tab" id = "java__" onclick="myfunc()">JAVA</a></li>
                     <li role="presentation"><a href="#python"
                      aria-controls="python" role="tab"
-                     data-toggle="tab" id = "python__" onclick="myfunc()">Python</a></li>
+                     data-toggle="tab" id = "python__" onclick="myfunc()">PYTHON</a></li>
              </ul>
 
          <div class="tab-content">
@@ -24,7 +28,7 @@
             <div  id="editor">
             </div>
             <div role="tabpanel" class="tab-pane fade in active" id="c" value="C">
-              <select name="ctype" class="form-control" id="clanguage" onchange="handleDD()">
+              <select   data-live-search="true"  class="form-control selectpicker" name="ctype" id="clanguage" onchange="handleDD()">
              <option value="">Select Code Template</option>
             <% for(var i=0; i<templates.length;i++) {
               if(templates[i].language.toLowerCase()=='c'){ %>
@@ -33,11 +37,10 @@
             <% }
           } %>
               </select>
-                <!-- <button class="btn btn-success" id="btn" onclick="insfunc()">Insert</button>-->
 
             </div>
-           <div role="tabpanel" class="tab-pane fade " id="cpp" value="CPP">
-             <select name="cpptype" class="form-control" id="cpplanguage" onchange="handleDD()">
+           <div role="tabpanel" class="tab-pane fade " id="cpp" value="CPP" >
+             <select  name="cpptype" data-live-search="true"  class="form-control selectpicker" id="cpplanguage" onchange="handleDD()" >
                           <option value="">Select Code Template</option>
              <% for(var i=0; i<templates.length;i++) {
                if(templates[i].language.toLowerCase()=='cpp'){ %>
@@ -48,8 +51,8 @@
 
 
            </div>
-            <div role="tabpanel" class="tab-pane fade " id="java" value="JAVA">
-              <select name="jtype" class="form-control" id="javalanguage" onchange="handleDD()">
+        <div role="tabpanel" class="tab-pane fade " id="java" value="JAVA">
+              <select name="jtype" data-live-search="true"  class="form-control selectpicker" id="javalanguage" onchange="handleDD()">
               <option value="">Select Code Template</option>
             <% for(var i=0; i<templates.length;i++) {
               if(templates[i].language.toLowerCase()=='java'){ %>
@@ -60,7 +63,7 @@
 
             </div>
             <div role="tabpanel" class="tab-pane fade " id="python" value="PYTHON">
-              <select name="ptype" class="form-control" id="pythonlanguage" onchange="handleDD()">
+              <select name="ptype" data-live-search="true"  class="form-control selectpicker" id="pythonlanguage" onchange="handleDD()">
               <option value="">Select Code Template</option>
               <% for(var i=0; i<templates.length;i++) {
                 if(templates[i].language.toLowerCase()=='python'){ %>
@@ -93,6 +96,7 @@
 
 
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.10.0/js/bootstrap-select.min.js"></script>
 
     </body>
 </html>

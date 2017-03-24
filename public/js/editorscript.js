@@ -2,8 +2,6 @@ var identifier = null;
 var session;
 var tracker = {
                ansic:"#include<stdio.h>\nvoid main(){\n\n}",
-                    ansic_max:"int max(int a, int b)\n{\n\treturn (a>b)?a:b;\n}",
-                    ansic_swap:"int swap(int *a, int *b)\n{\n\tint temp = *a;\n\t*a= *b;\n\t*b= temp;\n}",
                cpp11:"#include<iostream>\nusing namespace std;\nint main(){\nreturn 0;\n}",
                java:"import java.util.*;\nclass template{\npublic static void main(String arg[]){\n\n\t}\n}",
                python:"var x =raw_input();\n print x;"};
@@ -21,6 +19,8 @@ document.getElementById('editor').style.fontSize='12px';
 session.setValue(tracker.ansic);
 session.setMode("ace/mode/c_cpp");
 
+
+
 function myfunc(){
 
    var e= window.event,
@@ -32,18 +32,6 @@ function myfunc(){
 	editor.getSession().setMode("ace/mode/c_cpp");
 
 	}
-/*
-   if(btn.id=="ansicmaxcode"){
-	editor.insert(tracker.ansic_max);
-	editor.getSession().setMode("ace/mode/c_cpp");
-	}
-
-
-   if(btn.id=="ansicswapcode"){
-	editor.insert(tracker.ansic_swap);
-	editor.getSession().setMode("ace/mode/c_cpp");
-	}
-*/
 	if(btn.id=="cpp_11"){
 	//alert("hello");
 	editor.setValue(tracker.cpp11);
@@ -59,11 +47,11 @@ function myfunc(){
        editor.getSession().setMode("ace/mode/java");
 	}
 }
-function compile() {
-  var activeTab = $(".tab-content").find(".active");
-  var value = activeTab.attr('value');
-  //alert(value);
 
+
+
+function compile() {
+var value = $('.nav-tabs .active').text();
         $.post("/compile", {code: session.getValue(), language: value})
             .done(function(data) {
                 console.log("hell");
@@ -75,11 +63,12 @@ function compile() {
             }
         );
     }
-function run() {
-  var activeTab = $(".tab-content").find(".active");
-  var value = activeTab.attr('value');
-  //alert(value);
 
+
+
+
+function run() {
+var value = $('.nav-tabs .active').text();
         $.post("/run", {code: session.getValue(), language: value})
             .done(function(data) {
                 console.log(data);
@@ -98,31 +87,13 @@ function run() {
             }
         );
     }
-//function compile(){
-//
-////    $.post("/compile", function(data, status){
-////        alert("Data: " + data + "\nStatus: " + status);
-////    });
-//
-//    var data2=editor.getValue();
-//    $.post("/compile",{code:"Hello",language:"C"})
-//        .done(function(data){
-//        alert(data2);
-//       // console.log(code);
-//        $("#output-container").text("Status:"+  JSON.parse(data).compile_status);
-//    })
-//        .fail(function(data){
-//        // alert("Im here");
-//        $("#output-container").text("Failed");
-//    }
-//    );
-//}
+
+
 
 function onChangeTabs(identifier) {
 
     if(identifier == "ansi_c")
         {
-//            alert("workng");
 
             editor.setValue(tracker.ansic);
             editor.getSession().setMode("ace/mode/c_cpp");
@@ -135,8 +106,6 @@ function onChangeTabs(identifier) {
         }
     else if(identifier == "java__")
         {
-            //var paragraph = document.getElementById("java");
-            //var text = paragraph.textContent ? paragraph.textContent : paragraph.innerText;
             editor.setValue(tracker.java);
             editor.getSession().setMode("ace/mode/java");
         }
@@ -149,10 +118,11 @@ function onChangeTabs(identifier) {
 }
 
 
+
+
 function saveTextAsFile()
 {
-  var activeTab = $(".tab-content").find(".active");
-  var value = activeTab.attr('value');
+var value = $('.nav-tabs .active').text();
 
     var textToSave = editor.getValue();
     var textToSaveAsBlob = new Blob([textToSave], {type:""});
@@ -176,16 +146,15 @@ function saveTextAsFile()
 
     downloadLink.click();
 }
-//////////////////////////////////////
+
+
+
 function handleDD(){
-  var activeTab = $(".tab-content").find(".active");
-  var idee = activeTab.attr('id');
 
+      var idee = ($('.nav-tabs .active').text()).toLowerCase();
+      var madeid = (idee+"language").trim();
 
-      var madeid = idee+"language";
-
-      var templateSelect = document.getElementById(madeid);
-
+      var templateSelect = document.getElementById((madeid));
       var selectedText = templateSelect.options[templateSelect.selectedIndex].text;
       var selectedValue = templateSelect.options[templateSelect.selectedIndex].value;
       // alert(selectedText);
@@ -196,76 +165,10 @@ function handleDD(){
       $.post("/savehistory", {codename: selectedText , language: idee})
            .done(function(data) {
                console.log(data);
-               //$("#output-container").text("Compile status: " + JSON.parse(data).compile_status);
-           })
+             })
            .fail(function(data) {
                console.log("Failed: "+data);
-               //$("#output-container").text("Compilatiion failed!");
+
            }
        );
-
-
-
-      }
-// window.onload=function() {
-//
-//
-//   document.getElementById('clanguage').onchange=function() {
-//   var code = this.value;
-//   alert(this)
-//   if (code=="") return;
-//   editor.insert(code);
-//
-//   $.post("/savehistory", {codename: this.value , language: 'c'})
-//       .done(function(data) {
-//           console.log(data);
-//           //$("#output-container").text("Compile status: " + JSON.parse(data).compile_status);
-//       })
-//       .fail(function(data) {
-//           console.log("Failed: "+data);
-//           //$("#output-container").text("Compilatiion failed!");
-//       }
-//   );
-//
-//
-//
-//   }
-// document.getElementById('cpplanguage').onchange=function() {
-//     var code = this.value;
-//     if (code=="") return;
-//     editor.insert(code);
-//
-//
-//     }
-// document.getElementById('javalanguage').onchange=function() {
-//       var code = this.value;
-//       if (code=="") return;
-//       editor.insert(code);
-//
-//       }
-// document.getElementById('pythonlanguage').onchange=function() {
-//         var code = this.value;
-//         if (code=="") return;
-//         editor.insert(code);
-//
-//         }
-// }
-/////////////////////////
-
-
-
-
-
-function destroyClickedElement(event)
-{
-    document.body.removeChild(event.target);
-}
-
-
-function swap_values(current_tab,last_tab) {
-     //alert("Yaha tk chal rha h iska matlb.");
-   // alert("ggggggg");
-    identifier = current_tab;
-    onChangeTabs(identifier);
-
 }
