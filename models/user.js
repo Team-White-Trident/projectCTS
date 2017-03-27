@@ -6,7 +6,8 @@ var Schema = mongoose.Schema;
 var UserSchema = new Schema({
   email : { type:String, unique:true, lowercase:true},
   password : String,
-
+  facebook : String,
+  tokens : Array,
   profile : {
     name : { type:String, default : ''},
     picture : { type:String, default : ''}
@@ -21,7 +22,7 @@ var UserSchema = new Schema({
    templateLanguage: String
 
   }]
-  
+
 });
 //var user = new User();
 //user.email = "";
