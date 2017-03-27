@@ -21,6 +21,7 @@ var UserSchema = new Schema({
    templateLanguage: String
 
   }]
+  
 });
 //var user = new User();
 //user.email = "";

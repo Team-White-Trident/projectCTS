@@ -51,8 +51,8 @@ function myfunc(){
 
 
 function compile() {
-var value = $('.nav-tabs .active').text();
-        $.post("/compile", {code: session.getValue(), language: value})
+var value = $('.nav-tabs .active').text().trim();
+        $.post("/compile", {code: session.getValue(), language:value})
             .done(function(data) {
                 console.log("hell");
                 $("#output-container").text("Compile status: " + JSON.parse(data).compile_status);
@@ -68,7 +68,7 @@ var value = $('.nav-tabs .active').text();
 
 
 function run() {
-var value = $('.nav-tabs .active').text();
+var value = $('.nav-tabs .active').text().trim();
         $.post("/run", {code: session.getValue(), language: value})
             .done(function(data) {
                 console.log(data);
@@ -118,12 +118,11 @@ function onChangeTabs(identifier) {
 }
 
 
-
-
 function saveTextAsFile()
 {
-var value = $('.nav-tabs .active').text();
 
+
+var value = $('.nav-tabs .active').text().trim();
     var textToSave = editor.getValue();
     var textToSaveAsBlob = new Blob([textToSave], {type:""});
     var textToSaveAsURL = window.URL.createObjectURL(textToSaveAsBlob);
@@ -152,6 +151,7 @@ var value = $('.nav-tabs .active').text();
 function handleDD(){
 
       var idee = ($('.nav-tabs .active').text()).toLowerCase();
+      alert(idee);
       var madeid = (idee+"language").trim();
 
       var templateSelect = document.getElementById((madeid));
@@ -172,3 +172,17 @@ function handleDD(){
            }
        );
 }
+function destroyClickedElement(event)
+{
+    document.body.removeChild(event.target);
+}
+
+/*
+function swap_values(current_tab,last_tab) {
+     //alert("Yaha tk chal rha h iska matlb.");
+   // alert("ggggggg");
+    identifier = current_tab;
+    onChangeTabs(identifier);
+
+}
+*/

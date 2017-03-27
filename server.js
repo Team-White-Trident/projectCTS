@@ -13,7 +13,6 @@ var app = express();
 
 var secret = require('./config/secret');
 var User = require('./models/user');
-//var Category = require('./models/category');
 var Language = require('./models/language');
 var Template = require('./models/template');
 
@@ -53,16 +52,7 @@ app.use(function(req,res,next)
   res.locals.user=req.user;
   next();
 });
-/*
-app.use(function(req,res,next)
-{
-  Category.find({},function(err, categories){
-    if(err) return next(err);
-    res.locals.categories = categories;
-  next();
-});
-});
-*/
+
 app.use(function(req,res,next)
 {
   Language.find({},function(err, languages){
@@ -79,39 +69,6 @@ app.use(function(req,res,next)
     next();
   });
 });
-/*app.use(function(req,res,next)
-{
-  Template.find({category : "c"},function(err, templates){
-    if(err) return next(err);
-    res.locals.templatesc = templates;
-    next();
-  });
-});
-app.use(function(req,res,next)
-{
-  Template.find({category : "c++"},function(err, templates){
-    if(err) return next(err);
-    res.locals.templatescpp = templates;
-    next();
-  });
-});
-app.use(function(req,res,next)
-{
-  Template.find({category : "java"},function(err, templates){
-    if(err) return next(err);
-    res.locals.templatesj = templates;
-    next();
-  });
-});
-app.use(function(req,res,next)
-{
-  Template.find({category : "python"},function(err, templates){
-    if(err) return next(err);
-    res.locals.templatesp = templates;
-    next();
-  });
-});
-*/
 app.engine('ejs',engine);
 app.set('view engine', 'ejs');
 
