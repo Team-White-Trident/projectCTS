@@ -53,16 +53,7 @@ app.use(function(req,res,next)
   res.locals.user=req.user;
   next();
 });
-/*
-app.use(function(req,res,next)
-{
-  Category.find({},function(err, categories){
-    if(err) return next(err);
-    res.locals.categories = categories;
-  next();
-});
-});
-*/
+
 app.use(function(req,res,next)
 {
   Language.find({},function(err, languages){
@@ -71,6 +62,7 @@ app.use(function(req,res,next)
   next();
 });
 });
+
 app.use(function(req,res,next)
 {
   Template.find({},function(err, templates){
@@ -79,43 +71,9 @@ app.use(function(req,res,next)
     next();
   });
 });
-/*app.use(function(req,res,next)
-{
-  Template.find({category : "c"},function(err, templates){
-    if(err) return next(err);
-    res.locals.templatesc = templates;
-    next();
-  });
-});
-app.use(function(req,res,next)
-{
-  Template.find({category : "c++"},function(err, templates){
-    if(err) return next(err);
-    res.locals.templatescpp = templates;
-    next();
-  });
-});
-app.use(function(req,res,next)
-{
-  Template.find({category : "java"},function(err, templates){
-    if(err) return next(err);
-    res.locals.templatesj = templates;
-    next();
-  });
-});
-app.use(function(req,res,next)
-{
-  Template.find({category : "python"},function(err, templates){
-    if(err) return next(err);
-    res.locals.templatesp = templates;
-    next();
-  });
-});
-*/
+
 app.engine('ejs',engine);
 app.set('view engine', 'ejs');
-
-
 
 var mainRoutes = require('./routes/main');
 var userRoutes = require('./routes/user');
@@ -125,19 +83,6 @@ app.use(mainRoutes);
 app.use(userRoutes);
 app.use(adminRoutes);
 
-
-
-
-
-/*app.get('/', function(req, res) {
-  var name = "Manisha";
-  res.json("My Name Is " +name);
-});
-app.get('/catname', function(req, res) {
-
-  res.json('abcdref');
-});
-*/
 app.listen(3000,function(err){
   if(err) throw err;
   console.log("server is running at port " + secret.port);
