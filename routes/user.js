@@ -1,50 +1,9 @@
-
-
 var router = require('express').Router();
 var User = require('../models/user');
 
 var passport = require('passport');
 var passportConf = require('../config/passport');
 
-/**************************************/
-// var he = require('he-sdk-nodejs');
-// var settings = {
-//     'client_secret': '4c75190518a990bc876ce8c4403ce171dd7e549d' ,
-//     'async': 0 ,
-//     'lang': 'C' ,
-//     'time_limit': 5,
-//     'memory_limit': 262144
-// };
-//
-// router.post('/compile', function(req, res) {
-//
-//     settings.lang = 'C';
-//   //  console.log("Here is the code:"+ req.body.code);
-//     var source=req.body.code;
-//     he.compile(settings , source , function(err , result){
-//         //finalresponse += result;
-//         //if(isJson(finalresponse))
-//         //    res.send(finalresponse);
-//         if(err)console.log(err);
-//       //  console.log(result);;
-//         res.send(result);
-//     });
-// });
-//
-// router.post('/run', function(req, res) {
-//     settings.lang = 'C';
-//     //var finalresponse = "";
-//     var source=req.body.code;
-//
-//     he.run(settings, source , function(err, result){
-//         //finalresponse += result;
-//         //if(isJson(finalresponse))
-//         //    res.send(finalresponse);
-//         console.log(result);
-//         res.send(result);
-//     });
-// });
-/**************************************/
 var hackerEarth = require("hackerearth-node");
 var hackerEarth = new hackerEarth("4c75190518a990bc876ce8c4403ce171dd7e549d",'');
 
@@ -83,11 +42,6 @@ router.post("/run",function(req,res){
    });
 
 });
-
-
-
-
-
 /********************************************/
 
 router.post('/savehistory',function(req,res,next)
@@ -135,13 +89,7 @@ router.post('/login', passport.authenticate('local-login',{
 
 router.get('/profile',passportConf.isAuthenticated,function(req,res,next)
 {
-/*  User.findOne({_id: req.user._id}, function(err,user)
-{
-  if(err) return next(err);
-    res.render('accounts/profile', {user: user});
-});
 
-*/
 User
 .findOne({_id: req.user._id})
 //.populate('history.item')
@@ -199,10 +147,9 @@ router.get('/logout',function(req,res,next)
 req.logout();
 res.redirect('/');
 });
-
-
-
-
-
-
+router.get('/auth/facebook',passport.authenticate('facebook',{scope: 'email'}));
+router.get('/auth/facebook/callback',passport.authenticate('facebook', {
+  successRedirect:'/aceEditor',
+  failureRedirect:'/login'
+}));
 module.exports = router;

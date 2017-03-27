@@ -13,7 +13,6 @@ var app = express();
 
 var secret = require('./config/secret');
 var User = require('./models/user');
-//var Category = require('./models/category');
 var Language = require('./models/language');
 var Template = require('./models/template');
 
@@ -71,7 +70,10 @@ app.use(function(req,res,next)
     next();
   });
 });
+<<<<<<< HEAD
 
+=======
+>>>>>>> 48d10fa960b61f543cf839a80417e10d35a52376
 app.engine('ejs',engine);
 app.set('view engine', 'ejs');
 
