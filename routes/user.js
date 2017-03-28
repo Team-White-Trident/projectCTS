@@ -47,11 +47,6 @@ router.post("/run",function(req,res){
 
 router.post('/savehistory',function(req,res,next)
 {
-//var user = new User();
-  // user.history.templateName = req.body.codename;
-  // user.history.templateLanguage = req.body.language;
-  console.log(req.body.codename);
-  console.log(req.body.language);
    User.findOne({_id: req.user._id}, function(err,user)
    {
      if(err) return next(err);
