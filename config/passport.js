@@ -57,7 +57,7 @@ passport.use(new FacebookStrategy(secret.facebook,function(token, refreshToken,p
       newUser.facebook = profile.id;
       newUser.tokens.push({kind: 'facebook',token: token});
       newUser.profile.name = profile.displayName;
-      //newUser.profile.picture = 'https://graph.facebook.com/' + profile.id + '/picture?type=large';
+      newUser.profile.picture = 'https://graph.facebook.com/' + profile.id + '/picture?type=large';
       newUser.save(function(err)
     {
       if(err) throw err;
