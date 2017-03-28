@@ -61,18 +61,18 @@ app.use(function(req,res,next)
   next();
 });
 });
+
 app.use(function(req,res,next)
 {
   Template.find({},function(err, templates){
     if(err) return next(err);
     res.locals.templates = templates;
     next();
-  });
+  }).sort({count:-1});
 });
+
 app.engine('ejs',engine);
 app.set('view engine', 'ejs');
-
-
 
 var mainRoutes = require('./routes/main');
 var userRoutes = require('./routes/user');
@@ -82,19 +82,6 @@ app.use(mainRoutes);
 app.use(userRoutes);
 app.use(adminRoutes);
 
-
-
-
-
-/*app.get('/', function(req, res) {
-  var name = "Manisha";
-  res.json("My Name Is " +name);
-});
-app.get('/catname', function(req, res) {
-
-  res.json('abcdref');
-});
-*/
 app.listen(3000,function(err){
   if(err) throw err;
   console.log("server is running at port " + secret.port);

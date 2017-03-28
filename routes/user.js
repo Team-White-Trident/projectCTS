@@ -1,5 +1,6 @@
 var router = require('express').Router();
 var User = require('../models/user');
+var Template = require('../models/template');
 
 var passport = require('passport');
 var passportConf = require('../config/passport');
@@ -54,8 +55,6 @@ router.post('/savehistory',function(req,res,next)
    User.findOne({_id: req.user._id}, function(err,user)
    {
      if(err) return next(err);
-  var idd = req.user._id;
-  console.log(idd);
   user.history.push({
     templateName:req.body.codename,
     templateLanguage:req.body.language
@@ -63,8 +62,20 @@ router.post('/savehistory',function(req,res,next)
   user.save(function(err, user){
     if(err) next(err);
   });
-//user.update( { "_id" : idd},{ $push: { "history.templateName":req.body.codename,"history.templateLanguage":req.body.language  } });
 });
+  Template.findOne({name: req.body.codename,language:req.body.language}, function(err,x)
+  {
+    if(err) return next(err);
+  /*  x.update({
+      $inc: { count: 1}
+    });
+    */
+    x.count=x.count+1;
+  x.save(function(err,x){
+   if(err) next(err);
+  });
+  });
+
 
 });
 
@@ -121,6 +132,7 @@ router.post('/signup',function(req,res,next)
   user.profile.name = req.body.name;
   user.password = req.body.password;
   user.email = req.body.email;
+  user.profile.picture = user.gravatar();
 
 User.findOne({email : req.body.email}, function(err, existingUser)
 {
@@ -147,5 +159,9 @@ router.get('/logout',function(req,res,next)
 req.logout();
 res.redirect('/');
 });
-
+router.get('/auth/facebook',passport.authenticate('facebook',{scope: 'email'}));
+router.get('/auth/facebook/callback',passport.authenticate('facebook', {
+  successRedirect:'/aceEditor',
+  failureRedirect:'/login'
+}));
 module.exports = router;
