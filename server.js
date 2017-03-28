@@ -68,12 +68,8 @@ app.use(function(req,res,next)
     if(err) return next(err);
     res.locals.templates = templates;
     next();
-  });
+  }).sort({count:-1});
 });
-<<<<<<< HEAD
-
-=======
->>>>>>> 48d10fa960b61f543cf839a80417e10d35a52376
 app.engine('ejs',engine);
 app.set('view engine', 'ejs');
 
