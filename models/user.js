@@ -7,6 +7,7 @@ var UserSchema = new Schema({
   email : { type:String, unique:true, lowercase:true},
   password : String,
   facebook : String,
+  github : String,
   tokens : Array,
   profile : {
     name : { type:String, default : ''},

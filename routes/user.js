@@ -159,4 +159,9 @@ router.get('/auth/facebook/callback',passport.authenticate('facebook', {
   successRedirect:'/aceEditor',
   failureRedirect:'/login'
 }));
+router.get('/auth/github',passport.authenticate('github',{scope: 'email'}));
+router.get('/auth/github/callback',passport.authenticate('github', {
+  successRedirect:'/aceEditor',
+  failureRedirect:'/login'
+}));
 module.exports = router;

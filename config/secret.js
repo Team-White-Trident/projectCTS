@@ -11,5 +11,12 @@ module.exports = {
     clientSecret: process.env.FACEBOOK_SECRET || '256711db11c482c0c3fc3b5688b8d02d',
     profileFields: ['emails', 'displayName'],
     callbackURL: 'http://localhost:3000/auth/facebook/callback'
+  },
+  github: {
+    clientID: process.env.GITHUB_ID || '53b27f72da813e820977',
+    clientSecret: process.env.GITHUB_SECRET || '668cc01953ceb66f8819cc6a2d3158aa3d0cf2e4',
+    profileFields: ['emails', 'displayName'],
+    callbackURL: 'http://localhost:3000/auth/github/callback'
   }
+
 }

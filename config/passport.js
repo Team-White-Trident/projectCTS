@@ -2,6 +2,8 @@
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 var FacebookStrategy = require('passport-facebook').Strategy;
+var GithubStrategy = require('passport-github').Strategy;
+
 var secret = require('../config/secret');
 var User = require('../models/user');
 
@@ -63,6 +65,29 @@ passport.use(new FacebookStrategy(secret.facebook,function(token, refreshToken,p
       if(err) throw err;
 
       return done(null,newUser);
+     });
+   }
+  });
+}));
+
+passport.use(new GithubStrategy(secret.github,function(token, refreshToken,profile,done){
+  User.findOne({ github:profile.id},function(err,user){
+    if(err) return done(err);
+    if(user)
+    {
+      return done(null,user);
+    } else{
+      var newUser1 = new User();
+      newUser1.email = profile._json.email;
+      newUser1.github = profile.id;
+      newUser1.tokens.push({kind: 'github',token: token});
+      newUser1.profile.name = profile.displayName;
+      newUser1.profile.picture = 'https://graph.github.com/' + profile.id + '/picture?type=large';
+      newUser1.save(function(err)
+    {
+      if(err) throw err;
+
+      return done(null,newUser1);
      });
    }
   });
