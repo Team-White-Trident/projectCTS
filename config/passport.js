@@ -48,7 +48,7 @@ User.findOne({email: email}, function(err,user)
 }));
 
 passport.use(new FacebookStrategy(secret.facebook,function(token, refreshToken,profile,done){
-  User.findOne({ facebook:profile.id},function(err,user){
+  User.findOne({ email: profile._json.email},function(err,user){
     if(err) return done(err);
     if(user)
     {
@@ -71,7 +71,7 @@ passport.use(new FacebookStrategy(secret.facebook,function(token, refreshToken,p
 }));
 
 passport.use(new GithubStrategy(secret.github,function(token, refreshToken,profile,done){
-  User.findOne({ github:profile.id},function(err,user){
+  User.findOne({ email: profile._json.email },function(err,user){
     if(err) return done(err);
     if(user)
     {
@@ -82,7 +82,8 @@ passport.use(new GithubStrategy(secret.github,function(token, refreshToken,profi
       newUser1.github = profile.id;
       newUser1.tokens.push({kind: 'github',token: token});
       newUser1.profile.name = profile.displayName;
-      newUser1.profile.picture = 'https://graph.github.com/' + profile.id + '/picture?type=large';
+    //  newUser1.profile.picture = 'https://graph.github.com/' + profile.id + '/picture?type=large';
+      newUser1.profile.picture = 'https://avatars1.githubusercontent.com/u/'+  profile.id +'?v=3&s=400';
       newUser1.save(function(err)
     {
       if(err) throw err;
