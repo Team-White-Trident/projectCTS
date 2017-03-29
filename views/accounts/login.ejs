@@ -1,9 +1,9 @@
 <% layout('layout') -%>
 
 
-
-<div class="row">
-  <div class="col-lg-6 col-md-offset-3">
+<div class="container">
+<div class="row row-content">
+  <div class="col-lg-6 col-md-offset-3 box">
 
     <% if (message.length>0) { %>
      <div class="alert alert-danger alert-dismissible">
@@ -33,15 +33,16 @@
     </form>
     <br/>
       <div class="form-group">
-    <h4>Don't have an account? <a href="/signup">Signup</a></h4>
+          <h5>Don't have an account? <a href="/signup"><b>Signup</b></a></h5>
   </div>
-  <h2> OR</h2>
-  <a class="btn btn-block btn-social btn-facebook" href="/auth/facebook">
+  <h4> OR</h4>
+  <a style="margin:0px 0px 5px 0px;"class="btn btn-grp btn-lg btn-social btn-facebook" href="/auth/facebook">
     <i class="fa fa-facebook"></i> Sign in With facebook
   </a>
   <br/>
-  <a class="btn btn-block btn-social btn-github" href="/auth/github">
+  <a style="margin:5px 0px 10px 0px;"class=" btn btn-grp btn-lg btn-social btn-github" href="/auth/github">
     <i class="fa fa-github"></i> Sign in With Github
   </a>
+</div>
 </div>
 </div>
