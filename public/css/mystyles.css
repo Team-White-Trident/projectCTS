@@ -71,8 +71,12 @@ line-height: 100px;
     border-bottom: 1px ridge;
     min-height:400px;
     border-bottom: 1px solid black;
+    
 }
 
+.box{
+  box-shadow: 0px 0px 18px #888888;  border-radius: 15px;;width:600; height:700;   
+}
 .row-footer{
     background-color: #AfAfAf;
     margin:0px auto;
