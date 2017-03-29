@@ -150,7 +150,7 @@ var value = $('.nav-tabs .active').text().trim();
 
 function handleDD(){
 
-      var idee = ($('.nav-tabs .active').text()).toLowerCase();
+      var idee = ($('.nav-tabs .active').text()).toLowerCase().trim();
     //  alert(idee);
       var madeid = (idee+"language").trim();
 
