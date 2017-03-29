@@ -61,10 +61,6 @@ router.post('/savehistory',function(req,res,next)
   Template.findOne({name: req.body.codename,language:req.body.language}, function(err,x)
   {
     if(err) return next(err);
-  /*  x.update({
-      $inc: { count: 1}
-    });
-    */
     x.count=x.count+1;
   x.save(function(err,x){
    if(err) next(err);
