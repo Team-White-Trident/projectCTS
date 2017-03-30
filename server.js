@@ -68,7 +68,7 @@ app.use(function(req,res,next)
     if(err) return next(err);
     res.locals.templates = templates;
     next();
-  }).sort({count:-1});
+  }).sort({count:-1,name:1});
 });
 
 app.engine('ejs',engine);
