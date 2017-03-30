@@ -7,7 +7,12 @@
 
  <div class="container">
       <div class="row row-content">
-          <div class=""col-xs-12 col-sm-6>
+           <div class="btn-group pull-right" style="margin:0px 125px 0px 0px;">
+          <button class="btn btn-primary" onclick="compile()">Compile</button>
+           <button class="btn btn-primary" onclick="run()">Run</button>
+          <button class="btn btn-primary" onclick="saveTextAsFile()">Download Code</button>
+          </div>   
+          <div>
               <ul class="nav nav-tabs" role="tablist">
                     <li role="presentation" class="active"  >
                     <a href="#c" aria-controls="c"
@@ -22,8 +27,10 @@
                      aria-controls="python" role="tab"
                      data-toggle="tab" id = "python__" onclick="myfunc()">PYTHON</a></li>
              </ul>
-
-         <div class="tab-content col-sm-12">
+              
+           <div  id="editor" class="col-sm-8">
+            </div>
+         <div class="tab-content col-sm-4" style="height:500px">
 
            
             <div role="tabpanel" class="tab-pane fade in active" id="c" value="C">
@@ -74,21 +81,22 @@
 
             </div>
          </div>
-            <div  id="editor">
-            </div>
+           
           </div>
-          <div class="col-xs-12 col-sm-4">
+          
+ <div class="col-xs-12 col-sm-4 second">
               <h3>Output:</h3>
               <h5 id="output-container"></h5>
           </div>
-
-
-          <button class="btn btn-primary" onclick="compile()">Compile</button>
-           <button class="btn btn-primary" onclick="run()">Run</button>
-          <button class="btn btn-primary" onclick="saveTextAsFile()">Download Code</button>
+          
 
       </div>
-
+    
+ <script> $("button").click(function() {
+    $('html,body').animate({
+        scrollTop: $(".second").offset().top},
+        'slow');
+});</script>
 
          <script src="/src/ace.js" type="text/javascript" charset="utf-8"></script>
 
@@ -98,6 +106,8 @@
 
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.10.0/js/bootstrap-select.min.js"></script>
+     
+        
 
     </body>
 </html>
