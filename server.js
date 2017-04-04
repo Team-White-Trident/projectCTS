@@ -77,10 +77,11 @@ app.set('view engine', 'ejs');
 var mainRoutes = require('./routes/main');
 var userRoutes = require('./routes/user');
 var adminRoutes = require('./routes/admin');
-
+var editorRoutes = require('./routes/editor');
 app.use(mainRoutes);
 app.use(userRoutes);
 app.use(adminRoutes);
+app.use(editorRoutes);
 
 app.listen(3000,function(err){
   if(err) throw err;
