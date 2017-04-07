@@ -75,7 +75,7 @@ line-height: 100px;
 }
 
 .box{
-  box-shadow: 0px 0px 18px #888888;  border-radius: 15px;;width:500; height:700;   
+  box-shadow: 0px 0px 18px #888888;  border-radius: 15px;;width:600; height:700;
 }
 .row-footer{
     background-color: #AfAfAf;
@@ -158,6 +158,48 @@ min-height: 400px;
 	right:0;
 	left:0;
 	bottom:0;
-	
+
 	height: 500px;
     }
+/* profile page */
+.showcss{ display:block;}
+.hidecss{ display:none;}
+
+
+
+
+@media only screen and (min-width: 768px) {
+  .modal {
+    text-align: center;
+  }
+  .modal:before {
+    display: inline-block;
+    vertical-align: middle;
+    content: " ";
+    height: 100%;
+  }
+  .modal-dialog {
+    display: inline-block;
+    text-align: left;
+    vertical-align: middle;
+  }
+  .modal.fade .modal-dialog {
+    -webkit-transform: scale(0.9);
+    -moz-transform: scale(0.9);
+    -ms-transform: scale(0.9);
+    transform: scale(0.9);
+    opacity: 0;
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+  }
+  .modal.fade.in .modal-dialog {
+    -webkit-transform: scale(1);
+    -moz-transform: scale(1);
+    -ms-transform: scale(1);
+    transform: scale(1);
+    //-webkit-transform: translate3d(0, -300px, 0);
+    //transform: translate3d(0, -300px, 0);
+    opacity: 1;
+  }
+}
