@@ -18,9 +18,9 @@ var UserSchema = new Schema({
   history :[{
     //date: Date,
     //paid: { type:Number, default:0},
-   //item: {type: Schema.Types.ObjectId, ref:'Template'},
-   templateName: String,
-   templateLanguage: String
+   _id: {type: Schema.Types.ObjectId, ref:'Template'},
+   //templateName: String,
+   //templateLanguage: String
 
   }]
 

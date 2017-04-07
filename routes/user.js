@@ -51,14 +51,15 @@ router.post('/savehistory',function(req,res,next)
    {
      if(err) return next(err);
   user.history.push({
-    templateName:req.body.codename,
-    templateLanguage:req.body.language
+    _id:req.body.code
+  // templateName:req.body.codename,
+  //  templateLanguage:req.body.language
   });
   user.save(function(err, user){
     if(err) next(err);
   });
 });
-  Template.findOne({name: req.body.codename,language:req.body.language}, function(err,x)
+  Template.findOne({_id: req.body.code}, function(err,x)
   {
     if(err) return next(err);
     x.count=x.count+1;

@@ -157,12 +157,13 @@ function handleDD(){
       var templateSelect = document.getElementById((madeid));
       var selectedText = templateSelect.options[templateSelect.selectedIndex].text;
       var selectedValue = templateSelect.options[templateSelect.selectedIndex].value;
-      // alert(selectedText);
+      var selectedId = templateSelect.options[templateSelect.selectedIndex].id;
+     alert(selectedId);
       // alert(selectedValue);
       if (selectedValue=="") return;
       editor.insert(selectedValue);
 
-      $.post("/savehistory", {codename: selectedText , language: idee ,code: selectedValue})
+      $.post("/savehistory", {codename: selectedText , language: idee ,code:selectedId})
            .done(function(data) {
                console.log(data);
              })
