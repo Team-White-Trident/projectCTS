@@ -1,8 +1,8 @@
 
-$(document).on("click", ".open-AddBookDialog", function () {
-     var myBookId = $(this).data('id');
-     var myBookWhatever = $(this).data('whatever');
-  
-$(".modal-header").html(myBookId);
-     $(".modal-body #modalbody").html( myBookWhatever );
+$(document).on("click", ".open-profileDialog", function () {
+     var contentId = $(this).data('id');
+     var contentWhatever = $(this).data('whatever');
+
+$(".modal-header").html(contentId);
+     $(".modal-body #modalbody").html( contentWhatever );
 });
