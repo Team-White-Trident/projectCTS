@@ -22,8 +22,12 @@ var UserSchema = new Schema({
    templateName: String,
    templateLanguage: String
 
-  }]
-
+ }],
+ notifications :[{
+   notificationName: String,
+  description: String,
+  read: { type:Boolean, default : false}
+}]
 });
 //var user = new User();
 //user.email = "";
