@@ -162,7 +162,7 @@ function handleDD(){
       if (selectedValue=="") return;
       editor.insert(selectedValue);
 
-      $.post("/savehistory", {codename: selectedText , language: idee})
+      $.post("/savehistory", {codename: selectedText , language: idee ,code: selectedValue})
            .done(function(data) {
                console.log(data);
              })

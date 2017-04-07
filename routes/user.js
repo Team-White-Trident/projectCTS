@@ -106,6 +106,38 @@ router.post('/savehistory',function(req,res,next)
 
 
 
+router.route('/addNotification')
+  .get(function(req,res){
+    res.render('main/addNotification');
+  })
+   .post(function(req,res,next){
+        var i=0;
+       User.find({}, function(err,user)
+       {
+          if(err) return next(err);
+          for(i=0;i<user.length;i++){
+            if(user[i]._id!=req.user._id){
+              user[i].notifications.push({
+                notificationName: req.body.topic,
+                description:req.body.description
+              });
+              user[i].save(function(err, user){
+                if(err) next(err);
+
+              });
+
+
+            }
+          }
+          if(i==user.length){
+            req.flash('success','Broadcasted!');
+            return res.redirect('/addNotification');
+          }
+       });
+     });
+
+
+
 
 /********************************************/
 
