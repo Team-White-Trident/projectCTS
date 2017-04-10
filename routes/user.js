@@ -137,8 +137,10 @@ router.route('/addNotification')
        {
           if(err) return next(err);
           for(i=0;i<user.length;i++){
-            if(user[i]._id!=req.user._id){
+            if(!(user[i]._id.equals(req.user._id))){
               user[i].notifications.push({
+                creator:req.user.profile.name,
+                creatorEmail:req.user.email,
                 notificationName: req.body.topic,
                 description:req.body.description
               });
@@ -157,8 +159,10 @@ router.route('/addNotification')
        });
      });
 
-
-
+router.route('/notifications')
+  .get(function(req,res){
+    res.render('accounts/notifications');
+  });
 
 /********************************************/
 

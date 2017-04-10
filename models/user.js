@@ -24,6 +24,8 @@ var UserSchema = new Schema({
 
  }],
  notifications :[{
+   creator:String,
+   creatorEmail: String,
    notificationName: String,
   description: String,
   read: { type:Boolean, default : false}
