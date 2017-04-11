@@ -1,8 +1,13 @@
 <% layout('layout') -%>
 
 <head>
-  <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+   <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
    <script src="/js/profilePage.js" type="text/javascript" charset="utf-8"></script>
+   <link href="/css/monokai.css" rel="stylesheet" type="text/css">
+   <!-- <script src="/js/languages/rainbow.js" type="text/javascript" charset="utf-8" ></script> -->
+   <script src="/js/languages/rainbow-custom.min.js" type="text/javascript" charset="utf-8" ></script>
+   <!-- <script src="/js/languages/python.js" type="text/javascript" charset="utf-8" ></script> -->
+   <!-- <script src="/js/languages/c.js" type="text/javascript" charset="utf-8" ></script> -->
 </head>
 
 <div class="container">
@@ -35,7 +40,7 @@
 
       <!--  <td><a href=" " id="btnTest"><%= user.history[i].templateName %></a></td> -->
       <!--  <td> <input type="button" id ="btnTest"  value="<%= user.history[i].templateName %>"/> </td> -->
-        <td><a type="button" class="open-profileDialog btn" data-toggle="modal" data-id="<%= templates[j].name %>" data-whatever="<%=templates[j].code%>" href="#profilebox"><%= templates[j].name %></a></td>
+        <td><a type="button" class="open-profileDialog btn" data-toggle="modal" data-id="<%= templates[j].name %>" data-lang="<%= templates[j].language %>" data-whatever="<%=templates[j].code%>" href="#profilebox"><%= templates[j].name %></a></td>
                  <td><%= templates[j].language %></td>
                 <td><%= user.history[i]._id.getTimestamp() %></td>
 
@@ -49,7 +54,16 @@
                                      Head
                             </div>
                              <div class="modal-body">
-                                <p id="modalbody" style="white-space:pre"> </p>
+
+
+
+                                  <pre id = 'test'>
+                                    <code id="codearea"  data-language="c">
+
+                                  </code>
+                                </pre>
+
+
                             </div>
                              <div class="modal-footer">
                                   <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -62,6 +76,8 @@
            </tr>
 
      <% } %>
+
+
 
    </tbody>
   </thead>
