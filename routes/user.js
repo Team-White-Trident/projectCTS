@@ -13,10 +13,18 @@ router.route('/login')
       res.render('accounts/login', {message:req.flash('loginMessage')});
     })
     .post(passport.authenticate('local-login',{
-      successRedirect: '/aceEditor',
       failureRedirect: '/login',
       failureFlash: true
-    }));
+
+  }), (req, res) => {
+  if (req.user.email == "teamwhitetrident@gmail.com") {
+    res.redirect('/adminHome');
+  }
+  else {
+    res.redirect('/aceEditor');
+  }
+});
+
 
 
 
@@ -30,6 +38,7 @@ router.route('/signup')
     .post(function(req,res,next)
       {
         var user = new User();
+        user.role = req.body.role;
         user.profile.name = req.body.name;
         user.password = req.body.password;
         user.email = req.body.email;
@@ -108,23 +117,6 @@ router.post('/savehistory',function(req,res,next)
 
 
 /******************************************/
-
-
-router.get('/login',function(req,res)
-{
-//  if(req.user) return res.redirect('/');
-  res.render('accounts/login', {message:req.flash('loginMessage')});
-});
-
-
-
-router.post('/login', passport.authenticate('local-login',{
-
-  successRedirect: '/aceEditor',
-  failureRedirect: '/login',
-  failureFlash: true
-
-}));
 
 
 router.route('/addNotification')

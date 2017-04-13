@@ -42,14 +42,27 @@
 
 
          <li>  <a href="/notifications"><img src="/img/bell.png"><span style="display:none" id="notificationsBadge"  class="badge"> <%=count%></span></a></li>
-     <li><a class="dropdown-toggle" data-toggle="dropdown" href="#"><%= user.profile.name %></a>
+   <li><a class="dropdown-toggle" data-toggle="dropdown" href="#"><%= user.profile.name %></a>
        <ul class="dropdown-menu">
          <li><a href="/profile">Profile</a></li>
           <li><a href="/aceEditor">Editor</a></li>
          <li><a href="/logout">Logout</a></li>
        </ul>
      </li>
-<% } %>
+<% }
+else { %>
+
+  <li>  <a href="/notifications"><img src="/img/bell.png"></a></li>
+  <li><a href="/add-template">Add Templates</a></li>
+<li><a class="dropdown-toggle" data-toggle="dropdown" href="#"><%= user.profile.name %></a>
+<ul class="dropdown-menu">
+  <li><a href="/profile">Profile</a></li>
+   <li><a href="/aceEditor">Editor</a></li>
+   <li><a href="/logout">Logout</a></li>
+</ul>
+</li>
+  <% }
+ %>
     </ul>
     <!-- <script language="javascript" type="text/javascript">
 var timeout = setTimeout(reloaddiv, 5000);
