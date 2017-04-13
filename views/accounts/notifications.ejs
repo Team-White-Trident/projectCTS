@@ -16,7 +16,7 @@
 
   <div class="row">
 <div class="col-md-10">
-  <h2 class="text-center">Notifications</h2>
+  <h2 class="text-center">All Notifications</h2>
   <table class="table table-striped sticky-header">
     <thead>
       <tr>
@@ -27,7 +27,7 @@
       <tbody>
 
           <tr>
-            <% for( var j=0; j<user.notifications.length;j++) { %>
+            <% for( var j=user.notifications.length-1; j>=0;j--) { %>
 
 
              <td><a type="button" class="open-profileDialog btn" data-toggle="modal" data-id="<%= user.notifications[j].notificationName%>" data-whatever="<%= user.notifications[j].description%>" href="#notificationBox"><%= user.notifications[j].notificationName%></a></td>
