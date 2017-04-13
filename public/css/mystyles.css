@@ -42,10 +42,13 @@ vertical-align: middle;
 
 
 }
+.btn-primary{
+    background:#088DA5;
+}
 
 .coditec{
     text-shadow: 0px 0px 20px #000000;
-    color:brown;
+        color:#088DA5;
 line-height: 100px;
     font-family:fantasy;
 }
@@ -57,6 +60,8 @@ line-height: 100px;
     font-family: fantasy;
     font-size: 80px;
     line-height: 150px;
+    color:  #088DA5;
+     text-shadow: 0px 0px 2px #000000;
     font-weight: bold;
 
 }
@@ -64,7 +69,9 @@ line-height: 100px;
     line-height: 70px;
     font-family: monospace;
     font-size: 50px;
-    font-weight: lighter;
+/*     text-shadow: 0px 0px 2px #000000;*/
+    color: #EDB88B;
+/*    font-weight: lighter;*/
 }
 .row-content {
     margin:0px auto;
@@ -77,7 +84,7 @@ line-height: 100px;
   box-shadow: 0px 0px 18px #888888;  border-radius: 15px;width:600; height:700;
 }
 .row-footer{
-    background-color: #AfAfAf;
+    background-color: #051923;
     margin:0px auto;
     padding: 0px 0px 0px 0px;
 }
@@ -110,14 +117,16 @@ body{
 }
 
 .navbar-inverse {
-     background: #303F9F;
+     background: #088DA5;
+
 }
+
 
 .navbar-inverse .navbar-nav > .active > a,
 .navbar-inverse .navbar-nav > .active > a:hover,
 .navbar-inverse .navbar-nav > .active > a:focus {
-    color: #fff;
-    background: #1A237E;
+    color: #088DA5;
+    background: #fff;
 }
 
 .navbar-inverse .navbar-nav > .open > a,
