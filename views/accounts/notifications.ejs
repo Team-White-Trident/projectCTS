@@ -1,0 +1,67 @@
+<% layout('layout') -%>
+
+<head>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+   <script src="/js/profilePage.js" type="text/javascript" charset="utf-8"></script>
+   <script>
+   $.post("/notifications",{});
+
+   </script>
+
+
+
+</head>
+
+<div class="container">
+
+  <div class="row">
+<div class="col-md-10">
+  <h2 class="text-center">All Notifications</h2>
+  <table class="table table-striped sticky-header">
+    <thead>
+      <tr>
+        <th>Notification's Title</th>
+        <th>Author(Email)</th>
+        <th>Time Posted</th>
+      </tr>
+      <tbody>
+
+          <tr>
+            <% for( var j=user.notifications.length-1; j>=0;j--) { %>
+
+
+             <td><a type="button" class="open-profileDialog btn" data-toggle="modal" data-id="<%= user.notifications[j].notificationName%>" data-whatever="<%= user.notifications[j].description%>" href="#notificationBox"><%= user.notifications[j].notificationName%></a></td>
+                  <td><%= user.notifications[j].creator%> (<%=user.notifications[j].creatorEmail %>)</td>
+                 <!-- <td></td> -->
+                <td><%= user.notifications[j]._id.getTimestamp() %></td>
+
+                <div  id="notificationBox" class="modal fade" role="dialog" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                    <strong> Head</strong>
+                            </div>
+                             <div class="modal-body">
+                                <p id="codearea" style="word-wrap: break-word;"> </p>
+                            </div>
+                             <div class="modal-footer">
+                                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+           </tr>
+
+     <% } %>
+
+   </tbody>
+  </thead>
+  </table>
+
+</div>
+
+</div>
+</div>

@@ -4,6 +4,7 @@ var bcrypt = require('bcrypt-nodejs');
 var Schema = mongoose.Schema;
 
 var UserSchema = new Schema({
+  role : String,
   email : { type:String, unique:true, lowercase:true},
   password : String,
   facebook : String,
@@ -14,16 +15,16 @@ var UserSchema = new Schema({
     picture : { type:String, default : ''}
   },
 
-  address : String,
   history :[{
-    //date: Date,
-    //paid: { type:Number, default:0},
-   //item: {type: Schema.Types.ObjectId, ref:'Template'},
-   templateName: String,
-   templateLanguage: String
-
-  }]
-
+   _id: {type: Schema.Types.ObjectId, ref:'Template'}
+ }],
+ notifications :[{
+   creator:String,
+   creatorEmail: String,
+   notificationName: String,
+  description: String,
+  read: { type:Boolean, default : false}
+}]
 });
 //var user = new User();
 //user.email = "";

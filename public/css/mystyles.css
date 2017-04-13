@@ -71,13 +71,10 @@ line-height: 100px;
     padding: 20px 0px 50px 0px;
     border-bottom: 1px ridge;
     min-height:400px;
-   
-    
-}
 
+}
 .box{
-  
-  box-shadow: 0px 0px 18px #888888;  border-radius: 15px;width:600; height:700;   
+  box-shadow: 0px 0px 18px #888888;  border-radius: 15px;width:600; height:700;
 }
 .row-footer{
     background-color: #AfAfAf;
@@ -93,7 +90,7 @@ line-height: 100px;
 
 
     margin-bottom: 0px;
-    
+
     background-position: 0% 25%;
     background-size: cover;
     background-repeat: no-repeat;
@@ -160,7 +157,7 @@ min-height: 400px;
 	right:0;
 	left:0;
 	bottom:0;
-	
+
 	height: 500px;
     }
 
@@ -198,4 +195,10 @@ min-height: 400px;
     //transform: translate3d(0, -300px, 0);
     opacity: 1;
   }
+}
+
+.badge{
+
+  background: red;
+
 }

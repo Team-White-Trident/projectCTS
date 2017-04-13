@@ -4,7 +4,10 @@ var Template = require('../models/template');
 var Language = require('../models/language');
 
 
-
+router.get('/adminHome',function(req,res)
+{
+  res.render('admin/adminHome');
+});
 
 router.get('/add-language',function(req,res,next)
 {
@@ -23,15 +26,7 @@ router.post('/add-language',function(req,res,next){
 });
 router.get('/add-template',function(req,res,next)
 {
-//cat= [{name:"C"},
-//{name:"C++"},
-//{name:"Java"},
-//];
-//Category.find({},function(err, docs){
-              //  res.send('index',{docs:docs});
-              res.render('admin/add-template',{message:req.flash('success')});
-       //});
-
+            res.render('admin/add-template',{message:req.flash('success')});
 });
 
 router.post('/add-template',function(req,res,next){

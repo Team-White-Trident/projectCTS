@@ -2,7 +2,10 @@
 
 <head>
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+   <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
    <script src="/js/profilePage.js" type="text/javascript" charset="utf-8"></script>
+   <link href="/css/monokai.css" rel="stylesheet" type="text/css">
+   <script src="/js/languages/rainbow-custom.min.js" type="text/javascript" charset="utf-8" ></script>
 </head>
 
 <div class="container">
@@ -15,7 +18,7 @@
 <h4>Name: <%= user.profile.name %></h4>
 <h4> Email: <%= user.email %></h4>
 </div>
-<div class="col-md-6">
+<div class="col-md-8">
   <h2 class="text-center">History</h2>
   <table class="table table-striped sticky-header">
     <thead>
@@ -28,23 +31,36 @@
 
         <% for(var i = user.history.length-1; i>=0; i--) {%>
           <tr>
+            <% for( var j=0; j<templates.length;j++) {
+              if(templates[j]._id.equals(user.history[i]._id)){ %>
 
 
       <!--  <td><a href=" " id="btnTest"><%= user.history[i].templateName %></a></td> -->
       <!--  <td> <input type="button" id ="btnTest"  value="<%= user.history[i].templateName %>"/> </td> -->
-        <td><a type="button" class="btn" data-toggle="modal" href="#profilebox"><%= user.history[i].templateName %></a></td>
-                 <td><%= user.history[i].templateLanguage %></td>
+        <td><a type="button" class="open-profileDialog btn" data-toggle="modal" data-id="<%= templates[j].name %>" data-lang="<%= templates[j].language %>" data-whatever="<%=templates[j].code%>" href="#profilebox"><%= templates[j].name %></a></td>
+                 <td><%= templates[j].language %></td>
                 <td><%= user.history[i]._id.getTimestamp() %></td>
+
+                <% }
+                } %>
                 <div  id="profilebox" class="modal fade" role="dialog" aria-hidden="true">
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">
                                      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                             <%= user.history[i].templateName %>
+                                  <b>Head</b>
                             </div>
-                            
                              <div class="modal-body">
-                <%= user.history[i].templateLanguage %>
+
+
+
+                                  <pre id = 'test'>
+                                    <code id="codearea"  data-language="c">
+
+                                  </code>
+                                </pre>
+
+
                             </div>
                              <div class="modal-footer">
                                   <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -57,10 +73,10 @@
            </tr>
 
      <% } %>
-
    </tbody>
   </thead>
   </table>
+
 </div>
 
 </div>

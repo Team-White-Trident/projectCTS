@@ -1,92 +1,69 @@
 var router = require('express').Router();
 var User = require('../models/user');
 var Template = require('../models/template');
-
 var passport = require('passport');
 var passportConf = require('../config/passport');
 
-var hackerEarth = require("hackerearth-node");
-var hackerEarth = new hackerEarth("4c75190518a990bc876ce8c4403ce171dd7e549d",'');
-
-var config={};
-config.time_limit=5;  //your time limit in integer
-config.memory_limit=323244;  //your memory limit in integer
-config.source='';  //your source code for which you want to hackerEarth api
-config.input="1";  //input against which you have to test your source code
-config.language="C"; //optional choose any one of them or none
-
-router.post("/compile",function(req,res){
-
-  config.source=req.body.code;
-  config.language=req.body.language;
-      console.log("Code is : "+ config.source);
-   hackerEarth.compile(config,function(err,response){
-
-       if(err) {
-           console.log("There is error");
-   console.log(err);
-       } else {
-           res.send(response);
-       }
- });
-});
-router.post("/run",function(req,res){
-  config.source=req.body.code;
-  config.language=req.body.language;
-  hackerEarth.run(config,function(err,response){
-         if(err) {
-          console.log("This is error"+ err);
-         } else {
-           //deal with response
-           res.send(response);
-         }
-   });
-
-});
-/********************************************/
-
-router.post('/savehistory',function(req,res,next)
-{
-   User.findOne({_id: req.user._id}, function(err,user)
-   {
-     if(err) return next(err);
-  user.history.push({
-    templateName:req.body.codename,
-    templateLanguage:req.body.language
-  });
-  user.save(function(err, user){
-    if(err) next(err);
-  });
-});
-  Template.findOne({name: req.body.codename,language:req.body.language}, function(err,x)
-  {
-    if(err) return next(err);
-    x.count=x.count+1;
-  x.save(function(err,x){
-   if(err) next(err);
-  });
-  });
 
 
-});
+router.route('/login')
+    .get(function(req,res)
+    {
+    //  if(req.user) return res.redirect('/');
+      res.render('accounts/login', {message:req.flash('loginMessage')});
+    })
+    .post(passport.authenticate('local-login',{
+      failureRedirect: '/login',
+      failureFlash: true
 
-
-/******************************************/
-
-
-router.get('/login',function(req,res)
-{
-//  if(req.user) return res.redirect('/');
-  res.render('accounts/login', {message:req.flash('loginMessage')});
+  }), (req, res) => {
+  if (req.user.email == "teamwhitetrident@gmail.com") {
+    res.redirect('/adminHome');
+  }
+  else {
+    res.redirect('/aceEditor');
+  }
 });
 
 
 
-router.post('/login', passport.authenticate('local-login',{
-  successRedirect: '/aceEditor',
-  failureRedirect: '/login',
-  failureFlash: true
-}));
+
+router.route('/signup')
+    .get(function(req,res,next)
+    {
+      res.render('accounts/signup', {
+      errors: req.flash('errors')
+     });
+    })
+    .post(function(req,res,next)
+      {
+        var user = new User();
+        user.role = req.body.role;
+        user.profile.name = req.body.name;
+        user.password = req.body.password;
+        user.email = req.body.email;
+        user.profile.picture = user.gravatar();
+
+      User.findOne({email : req.body.email}, function(err, existingUser)
+      {
+        if(existingUser)
+        {
+            req.flash('errors','Account with that email already exists');
+          return res.redirect('/signup');
+        }
+        else {
+
+            user.save(function(err, user){
+              if(err) next(err);
+
+                req.logIn(user,function(err){
+                  if(err) next(err);
+                  res.redirect('/aceEditor');
+                });
+             });
+           }
+        });
+      });
 
 
 router.get('/profile',passportConf.isAuthenticated,function(req,res,next)
@@ -104,52 +81,118 @@ User
 
 });
 
-router.get('/aceEditor',function(req,res)
-{
- if(!req.user) return res.redirect('/');
-else  res.render('main/aceEditor');
-});
-
-router.get('/signup',function(req,res,next)
-{
-  res.render('accounts/signup', {
-  errors: req.flash('errors')
- });
-});
-
-router.post('/signup',function(req,res,next)
-{
-  var user = new User();
-  user.profile.name = req.body.name;
-  user.password = req.body.password;
-  user.email = req.body.email;
-  user.profile.picture = user.gravatar();
-
-User.findOne({email : req.body.email}, function(err, existingUser)
-{
-  if(existingUser)
-  {
-      req.flash('errors','Account with that email already exists');
-    return res.redirect('/signup');
-  }
-  else {
-
-      user.save(function(err, user){
-        if(err) next(err);
-
-          req.logIn(user,function(err){
-            if(err) next(err);
-            res.redirect('/aceEditor');
-          });
-       });
-     }
-  });
-});
 router.get('/logout',function(req,res,next)
 {
 req.logout();
 res.redirect('/');
 });
+
+
+router.post('/savehistory',function(req,res,next)
+{
+   User.findOne({_id: req.user._id}, function(err,user)
+   {
+     if(err) return next(err);
+  user.history.push({
+    _id:req.body.code
+  // templateName:req.body.codename,
+  //  templateLanguage:req.body.language
+  });
+  user.save(function(err, user){
+    if(err) next(err);
+  });
+});
+  Template.findOne({_id: req.body.code}, function(err,x)
+  {
+    if(err) return next(err);
+    x.count=x.count+1;
+  x.save(function(err,x){
+   if(err) next(err);
+  });
+  });
+
+
+});
+
+
+
+/******************************************/
+
+
+router.route('/addNotification')
+  .get(function(req,res){
+    res.render('main/addNotification');
+  })
+   .post(function(req,res,next){
+        var i=0;
+       User.find({}, function(err,user)
+       {
+          if(err) return next(err);
+          for(i=0;i<user.length;i++){
+            if(!(user[i]._id.equals(req.user._id))){
+              user[i].notifications.push({
+                creator:req.user.profile.name,
+                creatorEmail:req.user.email,
+                notificationName: req.body.topic,
+                description:req.body.description
+              });
+              user[i].save(function(err, user){
+                if(err) next(err);
+
+              });
+
+
+            }
+          }
+          if(i==user.length){
+            req.flash('success','Broadcasted!');
+            return res.redirect('/addNotification');
+          }
+       });
+     });
+
+router.route('/notifications')
+  .get(function(req,res){
+      res.render('accounts/notifications');
+  })
+  .post(function(req,res,next){
+    console.log("Here in post");
+
+    User.findOne({_id:req.user.id},function(err,user){
+      //  console.log(user);
+      for(i=0;i<user.notifications.length;i++){
+          if(user.notifications[i].read===false){
+            user.notifications[i].read=true;
+          }
+      }
+      user.save(function(err, user){
+        if(err) next(err);
+      //  console.log(user);
+      });
+
+        // user.each(function(data){
+        //   data.notifications.each(function(notification){
+        //     if(notification.read === false){
+        //       notification.read = true;
+        //     }
+        //   });
+        // });
+
+    });
+
+    // User.updateMany({_id:req.user._id,"notifications.read":false},{
+    //   $set:{
+    //   "notifications.$.read":true
+    // }},function(err,result){
+    //     if(err)console.log(err);
+    //     else{
+    //       console.log("THIS IS SUCCESS:" + result);
+    //     }
+    // });
+  });
+
+/********************************************/
+
 router.get('/auth/facebook',passport.authenticate('facebook',{scope: 'email'}));
 router.get('/auth/facebook/callback',passport.authenticate('facebook', {
   successRedirect:'/aceEditor',
@@ -160,4 +203,5 @@ router.get('/auth/github/callback',passport.authenticate('github', {
   successRedirect:'/aceEditor',
   failureRedirect:'/login'
 }));
+/******************************************/
 module.exports = router;
