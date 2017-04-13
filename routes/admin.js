@@ -9,6 +9,32 @@ router.get('/adminHome',function(req,res)
   res.render('admin/adminHome');
 });
 
+
+router.get('/review',function(req,res)
+{
+  res.render('admin/review');
+});
+
+router.post('/review',function(req,res,next)
+{
+//  var i=templates.length +1;
+var template = new Template();
+
+
+
+    template.name=req.body.name;
+    template.language=req.body.language;
+    template.code=req.body.code;
+    template.count=0;
+
+
+  template.save(function(err,template){
+    if(err) next(err);
+  });
+ res.redirect('/review');
+});
+
+
 router.get('/add-language',function(req,res,next)
 {
   res.render('admin/add-language',{message:req.flash('success')});
