@@ -4,7 +4,10 @@ var Template = require('../models/template');
 var Language = require('../models/language');
 
 
-
+router.get('/adminHome',function(req,res)
+{
+  res.render('admin/adminHome');
+});
 
 router.get('/add-language',function(req,res,next)
 {

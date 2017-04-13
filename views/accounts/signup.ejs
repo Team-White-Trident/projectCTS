@@ -49,21 +49,28 @@ if(pass1 == pass2)
     <form method = "post" name="regForm">
 
       <h1> Signup </h1>
+      <div class="form-group">
+        <label="role">As </label>
+        <br/>
 
+      <input type="radio" name="role" value="developer"> Developers
+       <input type="radio" name="role" value="others" > Others
+
+      </div>
     <div class="form-group">
-      <label="name">Name: </label>
+      <label="name">Name </label>
       <input type= "text" id="flname" class="form-control" name ="name" required>
     </div>
     <div class="form-group">
-      <label="name">Email: </label>
+      <label="name">Email </label>
       <input type= "email" id="eemail" class="form-control" name ="email" required>
     </div>
     <div class="form-group">
-      <label="name">Password: </label>
+      <label="name">Password </label>
       <input type="password" id="pass" class="form-control" name= "password" required>
     </div>
     <div class="form-group">
-      <label="name">Confirm Password: </label>
+      <label="name">Confirm Password </label>
       <input type="password" id="pass2" class="form-control" name= "password2" required>
     </div>
 
