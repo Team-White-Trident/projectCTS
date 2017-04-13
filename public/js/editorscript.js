@@ -151,7 +151,6 @@ var value = $('.nav-tabs .active').text().trim();
 function handleDD(){
 
       var idee = ($('.nav-tabs .active').text()).toLowerCase().trim();
-    //  alert(idee);
       var madeid = (idee+"language").trim();
 
       var templateSelect = document.getElementById((madeid));
@@ -186,3 +185,10 @@ function swap_values(current_tab,last_tab) {
 
 }
 */
+
+
+
+function handleModal()
+{
+    
+}
