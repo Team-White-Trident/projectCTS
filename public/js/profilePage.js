@@ -1,9 +1,12 @@
-window.onload = function () {
-    if (! localStorage.justOnce) {
-        localStorage.setItem("justOnce", "true");
-        window.location.reload();
+setTimeout(function ()
+    {
+        if (self.name != '_refreshed_'){
+        self.name = '_refreshed_';
+        self.location.reload(true);
+    } else {
+        self.name = '';
     }
-}
+  }, 4000);
 $(document).on("click", ".open-profileDialog", function () {
      var contentId = $(this).data('id');
      var contentWhatever = $(this).data('whatever');

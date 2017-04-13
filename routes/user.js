@@ -175,6 +175,7 @@ router.route('/notifications')
       }
       user.save(function(err, user){
         if(err) next(err);
+      //  console.log(user);
       });
 
         // user.each(function(data){
