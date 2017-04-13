@@ -1,4 +1,9 @@
-
+window.onload = function () {
+    if (! localStorage.justOnce) {
+        localStorage.setItem("justOnce", "true");
+        window.location.reload();
+    }
+}
 $(document).on("click", ".open-profileDialog", function () {
      var contentId = $(this).data('id');
      var contentWhatever = $(this).data('whatever');

@@ -16,12 +16,7 @@ var UserSchema = new Schema({
 
   address : String,
   history :[{
-    //date: Date,
-    //paid: { type:Number, default:0},
-   _id: {type: Schema.Types.ObjectId, ref:'Template'},
-   //templateName: String,
-   //templateLanguage: String
-
+   _id: {type: Schema.Types.ObjectId, ref:'Template'}
  }],
  notifications :[{
    creator:String,

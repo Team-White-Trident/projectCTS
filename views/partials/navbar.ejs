@@ -1,5 +1,5 @@
 
-<nav class="navbar navbar-inverse navbar-fixed-top">
+<nav  class="navbar navbar-inverse navbar-fixed-top">
   <div class="container">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -29,8 +29,19 @@
           <li><a href="/login">Login</a></li>
         </ul>
      </li>
-     <% } else{ %>
-         <li>  <a href="/notifications"><img src="/img/bell.png"></a></li>
+     <% } else{
+
+       var count=0;
+       for(var i=0;i<user.notifications.length;i++)
+       {
+            if(user.notifications[i].read===false){
+              count++;
+            }
+       }
+      %>
+
+
+         <li>  <a href="/notifications"><img src="/img/bell.png"><span style="display:none" id="notificationsBadge"  class="badge"> <%=count%></span></a></li>
      <li><a class="dropdown-toggle" data-toggle="dropdown" href="#"><%= user.profile.name %></a>
        <ul class="dropdown-menu">
          <li><a href="/profile">Profile</a></li>
@@ -40,6 +51,16 @@
      </li>
 <% } %>
     </ul>
+    <!-- <script language="javascript" type="text/javascript">
+var timeout = setTimeout(reloaddiv, 5000);
+
+function reloaddiv () {
+$('#navbardiv').load('navbar.ejs #navbardiv',function () {
+        $(this).unwrap();
+        timeout = setTimeout(reloaddiv, 5000);
+});
+}
+</script> -->
 
 
   </div>
