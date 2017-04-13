@@ -1,3 +1,5 @@
+var contentId,contentLang,contentWhatever;
+
 $(document).on("click", ".open-profileDialog", function () {
      var contentId = $(this).data('id');
      var contentWhatever = $(this).data('whatever');
@@ -10,6 +12,9 @@ $(document).on("click", ".open-profileDialog", function () {
 
      $("#codearea").html( contentWhatever );
      //$( "#test" ).load( "../../ #test" );
+     });
+     function reviewCode()
+     {
      $.post("/review", {code:contentWhatever,language:contentLang,name:contentId})
           .done(function(data) {
               console.log(data);
@@ -19,5 +24,4 @@ $(document).on("click", ".open-profileDialog", function () {
 
           }
       );
-
-});
+    }

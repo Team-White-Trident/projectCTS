@@ -30,7 +30,7 @@
                      <td><%= codeVerify[i].language %></td>
                      <td><%= codeVerify[i].creator%> (<%=codeVerify[i].creatorEmail %>)</td>
                     <td><%= codeVerify[i]._id.getTimestamp() %></td>
-                    <td><form method="post"><button name="verifyButton" type="submit" class="btn btn-primary" >Verify Code</button></form></td>
+                    <td><button name="verifyButton" type="submit" class="btn btn-primary" onclick="reviewCode()" >Verify Code</button></td>
                     <td><button  type="submit"class="btn btn-primary" >Reject Code</button></td>
 
 
