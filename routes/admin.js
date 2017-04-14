@@ -17,10 +17,8 @@ router.get('/review',function(req,res)
 
 router.post('/review',function(req,res,next)
 {
-//  var i=templates.length +1;
+
 var template = new Template();
-
-
 
     template.name=req.body.name;
     template.language=req.body.language;

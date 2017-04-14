@@ -1,7 +1,7 @@
 
 $(document).on("click", ".open-profileDialog", function () {
      var contentId = $(this).data('id');
-     var contentWhatever = $(this).data('whatever');
+     var contentCode = $(this).data('whatever');
     // var contentLang = $(this).data('lang').trim();
 
     $(".modal-header").html(contentId.bold());
@@ -9,7 +9,7 @@ $(document).on("click", ".open-profileDialog", function () {
 
     //$(".modal-body #modalbody").html( contentWhatever );
 
-     $("#codearea").html( contentWhatever );
+     $("#codearea").html(contentCode);
      //$( "#test" ).load( "../../ #test" );
 
 
