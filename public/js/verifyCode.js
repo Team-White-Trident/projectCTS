@@ -1,4 +1,4 @@
-var contentId ="",contentLang="",contentWhatever="";
+var contentId,contentLang,contentWhatever;
 
 $(document).on("click", ".open-verifyDialog", function () {
       contentId = $(this).data('id');
@@ -9,7 +9,6 @@ $(document).on("click", ".open-verifyDialog", function () {
 
 
 
- alert(contentWhatever);
 
 
      $.post("/review", {code:contentCode,language:contentLang,name:contentId})
@@ -21,5 +20,6 @@ $(document).on("click", ".open-verifyDialog", function () {
 
           }
       );
+      
 
 });

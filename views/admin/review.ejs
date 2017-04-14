@@ -23,7 +23,8 @@
           </tr>
           <tbody>
 
-            <% for(var i = 0; i<codeVerify.length; i++) {%>
+            <% for(var i = 0; i<codeVerify.length; i++) {
+               if(codeVerify[i].reviewed==false) {%>
               <tr>
 
             <td><a type="button" class="open-profileDialog btn" data-toggle="modal" data-id="<%=codeVerify[i].name %>"  data-whatever="<%= codeVerify[i].code %>"  href="#profilebox"><%= codeVerify[i].name %></a></td>
@@ -54,7 +55,8 @@
 
                </tr>
 
-         <% } %>
+         <% }
+       } %>
 
 
 

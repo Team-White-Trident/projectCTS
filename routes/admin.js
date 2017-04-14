@@ -1,8 +1,7 @@
 var router = require('express').Router();
-//var Category = require('../models/category');
 var Template = require('../models/template');
 var Language = require('../models/language');
-
+var CodeVerify = require('../models/codestoverify');
 
 router.get('/adminHome',function(req,res)
 {
@@ -25,6 +24,15 @@ var template = new Template();
     template.code=req.body.code;
     template.count=0;
 
+CodeVerify.findOne({name:req.body.name,language:req.body.language},function(err,x)
+{
+  if(err) return next(err);
+  x.reviewed=true;
+  x.save(function(err,x){
+   if(err) next(err);
+  });
+
+});
 
   template.save(function(err,template){
     if(err) next(err);
