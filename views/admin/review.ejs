@@ -23,16 +23,15 @@
           </tr>
           <tbody>
 
-            <% for(var i = 0; i<codeVerify.length; i++) {
-               if(codeVerify[i].reviewed==false) {%>
+            <% for(var i = 0; i<codeVerify.length; i++) {%>
               <tr>
 
-            <td><a type="button" class="open-profileDialog btn" data-toggle="modal" data-id="<%=codeVerify[i].name %>"  data-whatever="<%= codeVerify[i].code %>"  href="#profilebox"><%= codeVerify[i].name %></a></td>
+            <td><a type="button" class="open-profileDialog btn" data-toggle="modal" data-id="<%=codeVerify[i].name %>"  data-code="<%= codeVerify[i].code %>"  href="#profilebox"><%= codeVerify[i].name %></a></td>
                      <td><%= codeVerify[i].language %></td>
                      <td><%= codeVerify[i].creator%> (<%=codeVerify[i].creatoremail %>)</td>
                     <td><%= codeVerify[i]._id.getTimestamp() %></td>
-                    <td><button name="verifyButton" type="button" class="open-verifyDialog btn" data-id="<%=codeVerify[i].name %>" data-lang="<%=codeVerify[i].language %>"data-whatever="<%= codeVerify[i].code %>">Verify Code</button></td>
-                    <td><button  type="submit"class="btn btn-primary" >Reject Code</button></td>
+                    <td><button name="verifyButton" type="button" class="open-verifyDialog btn" data-id="<%=codeVerify[i].name %>" data-lang="<%=codeVerify[i].language %>"data-code="<%= codeVerify[i].code %>">Verify Code</button></td>
+                    <td><button name="rejectButton" type="button"class=" open-rejectDialog btn" data-id="<%=codeVerify[i].name %>" data-lang="<%=codeVerify[i].language %>">Reject Code</button></td>
 
 
                     <div  id="profilebox" class="modal fade" role="dialog" aria-hidden="true">
@@ -55,7 +54,7 @@
 
                </tr>
 
-         <% }
+         <%
        } %>
 
 

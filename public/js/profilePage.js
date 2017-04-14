@@ -1,7 +1,7 @@
 
 $(document).on("click", ".open-profileDialog", function () {
      var contentId = $(this).data('id');
-     var contentCode = $(this).data('whatever');
+     var contentCode = $(this).data('code');
     // var contentLang = $(this).data('lang').trim();
 
     $(".modal-header").html(contentId.bold());

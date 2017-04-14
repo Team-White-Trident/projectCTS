@@ -16,11 +16,7 @@ var UserSchema = new Schema({
   },
 
   history :[{
-    //date: Date,
-    //paid: { type:Number, default:0},
    _id: {type: Schema.Types.ObjectId, ref:'Template'},
-   //templateName: String,
-   //templateLanguage: String
 
  }],
  notifications :[{
@@ -31,9 +27,7 @@ var UserSchema = new Schema({
   read: { type:Boolean, default : false}
 }]
 });
-//var user = new User();
-//user.email = "";
-//user.profile.name= "Manisha";
+
 UserSchema.pre('save',function(next)
 {
   var user = this;

@@ -24,15 +24,11 @@ var template = new Template();
     template.code=req.body.code;
     template.count=0;
 
-CodeVerify.findOne({name:req.body.name,language:req.body.language},function(err,x)
+CodeVerify.remove({name:req.body.name,language:req.body.language},function(err)
 {
-  if(err) return next(err);
-  x.reviewed=true;
-  x.save(function(err,x){
-   if(err) next(err);
-  });
-
+  if(err) next (err);
 });
+
 
   template.save(function(err,template){
     if(err) next(err);
@@ -40,6 +36,15 @@ CodeVerify.findOne({name:req.body.name,language:req.body.language},function(err,
  res.redirect('/review');
 });
 
+
+router.post('/reject',function(req,res,next)
+{
+  CodeVerify.remove({name:req.body.name,language:req.body.language},function(err)
+  {
+    if(err) next (err);
+  });
+  res.redirect('/review');
+ });
 
 router.get('/add-language',function(req,res,next)
 {

@@ -40,7 +40,7 @@
 
       <!--  <td><a href=" " id="btnTest"><%= user.history[i].templateName %></a></td> -->
       <!--  <td> <input type="button" id ="btnTest"  value="<%= user.history[i].templateName %>"/> </td> -->
-        <td><a type="button" class="open-profileDialog btn" data-toggle="modal" data-id="<%= templates[j].name %>" data-lang="<%= templates[j].language %>" data-whatever="<%=templates[j].code%>" href="#profilebox"><%= templates[j].name %></a></td>
+        <td><a type="button" class="open-profileDialog btn" data-toggle="modal" data-id="<%= templates[j].name %>" data-lang="<%= templates[j].language %>" data-code="<%=templates[j].code%>" href="#profilebox"><%= templates[j].name %></a></td>
                  <td><%= templates[j].language %></td>
                 <td><%= user.history[i]._id.getTimestamp() %></td>
 
