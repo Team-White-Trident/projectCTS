@@ -1,0 +1,69 @@
+<% layout('layout') -%>
+
+<head>
+   <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+   <script src="/js/verifyCode.js" type="text/javascript" charset="utf-8"></script>
+   <script src="/js/profilePage.js" type="text/javascript" charset="utf-8"></script>
+</head>
+
+
+<div class="container">
+
+  <div class="row">
+
+    <div class="col-md-8">
+      <h2 class="text-center">Codes for Review</h2>
+      <table class="table table-striped sticky-header">
+        <thead>
+          <tr>
+            <th>Code's Name</th>
+            <th>Language</th>
+            <th>Creator(Email)</th>
+            <th>Time Posted</th>
+          </tr>
+          <tbody>
+
+            <% for(var i = 0; i<codeVerify.length; i++) {%>
+              <tr>
+
+            <td><a type="button" class="open-profileDialog btn" data-toggle="modal" data-id="<%=codeVerify[i].name %>"  data-code="<%= codeVerify[i].code %>"  href="#profilebox"><%= codeVerify[i].name %></a></td>
+                     <td><%= codeVerify[i].language %></td>
+                     <td><%= codeVerify[i].creator%> (<%=codeVerify[i].creatoremail %>)</td>
+                    <td><%= codeVerify[i]._id.getTimestamp() %></td>
+                    <td><button name="verifyButton" type="button" class="open-verifyDialog btn" data-id="<%=codeVerify[i].name %>" data-lang="<%=codeVerify[i].language %>"data-code="<%= codeVerify[i].code %>">Verify Code</button></td>
+                    <td><button name="rejectButton" type="button"class=" open-rejectDialog btn" data-id="<%=codeVerify[i].name %>" data-lang="<%=codeVerify[i].language %>">Reject Code</button></td>
+
+
+                    <div  id="profilebox" class="modal fade" role="dialog" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                      <b>Head</b>
+                                </div>
+                                 <div class="modal-body">
+                                    <p id="codearea" style="word-wrap: break-word"> </p>
+                                </div>
+                                 <div class="modal-footer">
+                                      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+               </tr>
+
+         <%
+       } %>
+
+
+
+       </tbody>
+      </thead>
+      </table>
+
+    </div>
+
+    </div>
+    </div>

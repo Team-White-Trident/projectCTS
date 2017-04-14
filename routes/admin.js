@@ -1,13 +1,50 @@
 var router = require('express').Router();
-//var Category = require('../models/category');
 var Template = require('../models/template');
 var Language = require('../models/language');
-
+var CodeVerify = require('../models/codestoverify');
 
 router.get('/adminHome',function(req,res)
 {
   res.render('admin/adminHome');
 });
+
+
+router.get('/review',function(req,res)
+{
+  res.render('admin/review');
+});
+
+router.post('/review',function(req,res,next)
+{
+
+var template = new Template();
+
+    template.name=req.body.name;
+    template.language=req.body.language;
+    template.code=req.body.code;
+    template.count=0;
+
+CodeVerify.remove({name:req.body.name,language:req.body.language},function(err)
+{
+  if(err) next (err);
+});
+
+
+  template.save(function(err,template){
+    if(err) next(err);
+  });
+ res.redirect('/review');
+});
+
+
+router.post('/reject',function(req,res,next)
+{
+  CodeVerify.remove({name:req.body.name,language:req.body.language},function(err)
+  {
+    if(err) next (err);
+  });
+  res.redirect('/review');
+ });
 
 router.get('/add-language',function(req,res,next)
 {

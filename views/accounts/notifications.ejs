@@ -30,7 +30,7 @@
             <% for( var j=user.notifications.length-1; j>=0;j--) { %>
 
 
-             <td><a type="button" class="open-profileDialog btn" data-toggle="modal" data-id="<%= user.notifications[j].notificationName%>" data-whatever="<%= user.notifications[j].description%>" href="#notificationBox"><%= user.notifications[j].notificationName%></a></td>
+             <td><a type="button" class="open-profileDialog btn" data-toggle="modal" data-id="<%= user.notifications[j].notificationName%>" data-code="<%= user.notifications[j].description%>" href="#notificationBox"><%= user.notifications[j].notificationName%></a></td>
                   <td><%= user.notifications[j].creator%> (<%=user.notifications[j].creatorEmail %>)</td>
                  <!-- <td></td> -->
                 <td><%= user.notifications[j]._id.getTimestamp() %></td>
