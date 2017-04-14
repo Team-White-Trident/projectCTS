@@ -156,10 +156,10 @@ router.route('/notifications')
       res.render('accounts/notifications');
   })
   .post(function(req,res,next){
-    console.log("Here in post");
+
 
     User.findOne({_id:req.user.id},function(err,user){
-      //  console.log(user);
+
       for(i=0;i<user.notifications.length;i++){
           if(user.notifications[i].read===false){
             user.notifications[i].read=true;
@@ -167,28 +167,9 @@ router.route('/notifications')
       }
       user.save(function(err, user){
         if(err) next(err);
-      //  console.log(user);
       });
-
-        // user.each(function(data){
-        //   data.notifications.each(function(notification){
-        //     if(notification.read === false){
-        //       notification.read = true;
-        //     }
-        //   });
-        // });
-
     });
 
-    // User.updateMany({_id:req.user._id,"notifications.read":false},{
-    //   $set:{
-    //   "notifications.$.read":true
-    // }},function(err,result){
-    //     if(err)console.log(err);
-    //     else{
-    //       console.log("THIS IS SUCCESS:" + result);
-    //     }
-    // });
   });
 
 /********************************************/
