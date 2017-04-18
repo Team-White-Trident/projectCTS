@@ -1,21 +1,85 @@
 <% layout('layout') -%>
 <br/>
 <br/>
+
 <div class="container">
+  <h3 style="color:#088DA5">Users</h3>
+  <div class="row" >
+<div class="col-xs-12 col-sm-12 ">
+        <div class="row">
+          <% for(var i=0; i<3;i++) { %>
+            <div class="boxAdmin col-sm-3" style="width:25%">
 
-  <div class="row">
-    <div class="col-sm-6 col-md-4">
+              <h3 class="stopflow" style="color:red"><%= allusers[i].profile.name %></h3>
+              <h4 class="stopflow" style="color:blue"><%= allusers[i].email %></h4>
 
-  <li><a href="/add-template">Add Template</a></li>
-  <li><a href="/add-language">Add Language</a></li>
-  <li><a href="/review">Review Code </a></li>
-  <table>
+            </div>
 
-  <% for(var i=0; i<templates.length;i++) { %>
-  <tr>  <%= templates[i].name %></tr>
     <% } %>
+    <div class="col-sm-3" style="width:20%">
+        <button class="btn btn-primary viewmore">View More..</button>
+    </div>
 
-</table>
+  </div>
+  </div>
+</div>
+
+<br/>
+
+<h3 style="color:#088DA5">Pending Reviews</h3>
+<div class="row" >
+<div class="col-xs-12 col-sm-12 ">
+      <div class="row">
+        <% var i=0;
+        while(i<3&&i<codeVerify.length) { %>
+          <div class="boxAdmin col-sm-3" style="width:25%">
+
+            <h3 class="stopflow" style="color:red"><%= codeVerify[i].name %></h3>
+            <h4 class="stopflow" style="color:blue"><%= codeVerify[i].creator %></h4>
+
+          </div>
+
+  <% i++;}
+    if(i==0){%>
+      <br/><h4>No pending reviews..</h4>
+  <%  }else{ %>
+
+    <div class="col-sm-3" style="width:20%">
+      <form action="/review">
+        <button type=submit class="btn btn-primary viewmore">View More..</button>
+      </form>
+    </div>
+
+
+
+  <% } %>
+
 </div>
 </div>
+</div>
+<br/>
+
+    <h3 style="color:#088DA5">Templates</h3>
+     <div class="row">
+       <div class="col-xs-12 col-sm-12 ">
+        <div class="row">
+        <% for(var i=0; i<3;i++) { %>
+
+          <div class="boxAdmin col-sm-3" style="width:25%">
+  <h3 class="stopflow" style="color:red"><%= templates[i].name %></h3>
+              <h4 style="color:blue"><%= templates[i].language %></h4>
+
+            </div>
+
+
+          <% } %>
+          <div class="col-sm-3" style="width:20%">
+              <button class="btn btn-primary viewmore">View More..</button>
+          </div>
+
+  </div>
+      </div>
+    </div>
+
+<br/>
 </div>

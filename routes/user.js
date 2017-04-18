@@ -71,7 +71,7 @@ router.get('/profile',passportConf.isAuthenticated,function(req,res,next)
 
 User
 .findOne({_id: req.user._id})
-//.populate('history.item')
+
 .exec(function(err,user)
 {
   if(err) return next(err);
@@ -95,8 +95,6 @@ router.post('/savehistory',function(req,res,next)
      if(err) return next(err);
   user.history.push({
     _id:req.body.code
-  // templateName:req.body.codename,
-  //  templateLanguage:req.body.language
   });
   user.save(function(err, user){
     if(err) next(err);

@@ -76,7 +76,17 @@ app.use(function(req,res,next)
 {
   CodeVerify.find({},function(err, codes){
     if(err) return next(err);
+
     res.locals.codeVerify = codes;
+  next();
+});
+});
+app.use(function(req,res,next)
+{
+  User.find({},function(err,users){
+    if(err) return next(err);
+    res.locals.allusers = users;
+
   next();
 });
 });
