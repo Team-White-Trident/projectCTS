@@ -15,7 +15,7 @@ module.exports = {
     clientID: process.env.GITHUB_ID || '53b27f72da813e820977',
     clientSecret: process.env.GITHUB_SECRET || '668cc01953ceb66f8819cc6a2d3158aa3d0cf2e4',
     profileFields: ['emails', 'displayName'],
-    callbackURL: 'http://localhost:3000/auth/github/callback'
+    callbackURL: 'http://coditec.herokuapp.com/auth/github/callback'
   }
 
 }
