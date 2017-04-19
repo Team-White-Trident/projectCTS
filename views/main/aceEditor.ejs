@@ -27,7 +27,7 @@
                      aria-controls="python" role="tab"
                      data-toggle="tab" id = "python__" onclick="myfunc()">PYTHON</a></li>
              </ul>
-
+            
            <div  id="editor" class="col-sm-8" style="border-right:1px solid black">
             </div>
          <div class="tab-content col-sm-4" style="height:500px">
@@ -89,7 +89,7 @@
               <h5 id="output-container"></h5>
           </div>
 
-
+<button class="btn btn-primary">toggle PopUps</button>
       </div>
 </div>
 
@@ -98,6 +98,11 @@
         scrollTop: $(".second").offset().top},
         'slow');
 });</script>
+<script>
+$(document).ready(function(){
+    $('[data-toggle="popover"]').popover('show');   
+});
+</script>
 
          <script src="/src/ace.js" type="text/javascript" charset="utf-8"></script>
 

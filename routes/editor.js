@@ -32,7 +32,6 @@ router.post("/run",function(req,res){
          if(err) {
           console.log("This is error"+ err);
          } else {
-           //deal with response
            res.send(response);
          }
    });

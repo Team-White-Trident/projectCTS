@@ -19,18 +19,18 @@ for(var i=0;i<user.notifications.length;i++)
     </div>
   <div id="navbar" class="navbar-collapse collapse">
     <ul class="nav navbar-nav">
-                     <li class="active"><a  href="/"><span class="glyphicon glyphicon-home"
+                     <li><a  href="/"><span class="glyphicon glyphicon-home"
                          aria-hidden="true"></span> Home</a></li>
-                     <li><a style="color:#fff" href="/about">
+                     <li><a href="/about">
                         <span class="glyphicon glyphicon-info-sign"
                          aria-hidden="true"></span> About</a></li>
-                    <li><a style="color:#fff" href="/contactus"><i class = "fa fa-envelope-o"></i> Contact</a></li>
+                    <li><a href="/contactus"><i class = "fa fa-envelope-o"></i> Contact</a></li>
       </ul>
 
     <ul class="nav navbar-nav navbar-right">
 
      <% if(!user) { %>
-      <li><a style="color:#fff" class="dropdown-toggle" data-toggle="dropdown" href="#">Signup / Login</a>
+      <li><a class="dropdown-toggle" data-toggle="dropdown" href="#">Signup / Login</a>
         <ul class="dropdown-menu">
           <li><a  href="/signup">Signup</a></li>
           <li><a href="/login">Login</a></li>
@@ -49,11 +49,10 @@ for(var i=0;i<user.notifications.length;i++)
        </ul>
      </li>
 <% } else { %>
-
-
-    <li>  <a href="/notifications"><img src="/img/bell.png"><span style="display:none" id="notificationsBadge"  class="badge"> <%=count%></span></a></li> 
-        <li><a style="color:#fff" href="/add-template">Add Templates</a></li>
+  <li>  <a href="/notifications"><img src="/img/bell.png"><span style="display:none" id="notificationsBadge"  class="badge"> <%=count%></span></a></li>
+        <li><a style="color:#fff" href="/add-code">Add Templates</a></li>
 <li><a  style="color:#fff" class="dropdown-toggle" data-toggle="dropdown" href="#"><%= user.profile.name %></a>
+
 <ul class="dropdown-menu">
   <li><a href="/profile">Profile</a></li>
    <li><a href="/aceEditor">Editor</a></li>
@@ -64,4 +63,5 @@ for(var i=0;i<user.notifications.length;i++)
     </ul>
 
   </div>
+</div>
 </nav>
