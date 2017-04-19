@@ -1,0 +1,182 @@
+<% layout('layout') -%>
+<head>
+  <meta charset="UTF-8">
+  <link href='http://fonts.googleapis.com/css?family=Titillium+Web:400,300,600' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+
+
+      <link rel="stylesheet" href="/css/getin.css">
+
+      <script type="text/javascript">
+      function validateForm() {
+
+       var ln = document.forms["regForm"]["name"].value;
+
+       if (ln == "") {
+           alert("Name must be filled out correctly");
+           return false;
+       }
+      var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[09]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+      //var re = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i;
+        var email=document.forms["regForm"]["email"].value;
+       if(!re.test(email)){
+           alert(" please enter correct Email ID!!");
+           return false;
+       }
+
+        var pass1=document.forms["regForm"]["password"].value;
+        var pass2=document.forms["regForm"]["password2"].value;
+      if(pass1 == pass2)
+        {
+
+          return true;
+        }else{
+            alert("Password do not match!");
+            return false;
+        }
+
+      }
+      </script>
+
+</head>
+<div style="margin:20px 0 20px 0" class="mid row">
+
+  <div class=" btn-group">
+      <a  class=" mid btn btn-lg btn-social btn-facebook" href="/auth/facebook">
+      <i class="fa fa-facebook "></i> Sign in With facebook
+      </a>
+
+      <a class="mid btn btn-lg btn-social btn-github" href="/auth/github">
+      <i class="fa fa-github"></i> Sign in With Github
+      </a>
+</div>
+</div>
+<p class="mid">-------------------OR------------------------</p>
+<div class="form">
+  <% if (message.length>0) { %>
+   <div class="alert alert-danger alert-dismissible">
+     <button  type="button" class="close" data-dismmiss="alert" arial-label="Close">
+       <span aria-hidden="true">&times;</span>
+     </button>
+     <%= message %>
+   </div>
+
+  <%  } %>
+  <% if (errors.length>0) { %>
+   <div class="alert alert-danger alert-dismissible">
+     <button  type="button" class="close" data-dismmiss="alert" arial-label="Close">
+       <span aria-hidden="true">&times;</span>
+     </button>
+     <%= errors %>
+   </div>
+
+<%  } %>
+
+      <ul class="tab-group">
+        <li class="tab active"><a href="#signup">Sign Up</a></li>
+        <li class="tab"><a href="#login">Log In</a></li>
+      </ul>
+
+      <div class="tab-content">
+
+        <div id="signup">
+          <h1>Sign Up for Free</h1>
+
+          <form action="/signup" name="regForm" method="post">
+
+            <!-- <div class="form-group">
+              <label="role">As </label>
+              <br/>
+
+            <input type="radio" name="role" value="developer"> Developers
+             <input type="radio" name="role" value="others" > Others
+
+            </div> -->
+
+
+
+
+          <div class="field-wrap">
+              <label class="label">
+                Full Name<span class="req">*</span>
+              </label>
+              <input class="input" id="flname"  name ="name" type="text" required autocomplete="off" />
+            </div>
+          <div class="top-row">
+            <div class="field-wrap">
+              <label class="labelr" >  <input  type="radio" name="role" value="developer"> Developer</label>
+            </div>
+            <div class="field-wrap">
+              <label class="labelr">  <input   type="radio" checked name="role" value="others">  Others</label>
+            </div>
+
+
+          </div>
+          <br/>
+          <div class="field-wrap">
+            <label class="label">
+              Email Address<span class="req">*</span>
+            </label>
+            <input class="input" id="eemail" name ="email" type="email"required autocomplete="off"/>
+          </div>
+
+          <div class="field-wrap">
+            <label class="label">
+              Set A Password<span class="req">*</span>
+            </label>
+            <input class="input"  id="pass" name= "password" type="password"required autocomplete="off"/>
+          </div>
+
+          <div class="field-wrap">
+            <label class="label">
+              Confirm Password<span class="req">*</span>
+            </label>
+            <input id="pass2" name= "password2" class="input" type="password"required autocomplete="off"/>
+          </div>
+
+
+          <button type="submit" class="button button-block"/>Get Started</button>
+
+          </form>
+
+        </div>
+
+        <div id="login">
+          <h1>Welcome Back!</h1>
+          <form action="/login" method="post">
+
+            <div class="field-wrap">
+            <label class="label">
+              Email Address<span class="req">*</span>
+            </label class="label">
+            <input class="input" type="email"required autocomplete="off" name="email"/>
+          </div>
+
+          <div class="field-wrap">
+            <label class="label">
+              Password<span class="req">*</span>
+            </label class="label">
+            <input class="input" type="password"required autocomplete="off" name="password"/>
+          </div>
+
+          <!-- <p class="forgot"><a href="#">Forgot Password?</a></p> -->
+
+          <button class="button button-block"/>Log In</button>
+
+          </form>
+
+        </div>
+
+      </div><!-- tab-content -->
+
+</div> <!-- /form -->
+<br/>
+<br/>
+<div>
+
+
+</div>
+
+  <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+
+    <script src="/js/getin.js"></script>

@@ -30,11 +30,18 @@ for(var i=0;i<user.notifications.length;i++)
     <ul class="nav navbar-nav navbar-right">
 
      <% if(!user) { %>
-      <li><a class="dropdown-toggle" data-toggle="dropdown" href="#" >Signup / Login</a>
-        <ul class="dropdown-menu">
-          <li><a  href="/signup">Signup</a></li>
-          <li><a href="/login">Login</a></li>
-        </ul>
+      <li><a  href="/getin">Signup / Login</a>
+     </li>
+     <% } else if(user.email=="teamwhitetrident@gmail.com"){ %>
+
+        <li>  <a href="/notifications"><img src="/img/bell.png"><span style="display:none" id="notificationsBadge"  class="badge"> <%=count%></span></a></li>
+       <li><a style="color:#fff" class="dropdown-toggle" data-toggle="dropdown" href="#"><%= user.profile.name %></a>
+       <ul class="dropdown-menu">
+         <li><a href="/addNotification">Notify Users</a></li>
+         <li><a href="/add-template">Add template</a></li>
+          <li><a href="/add-language">Add Language</a></li>
+         <li><a href="/logout">Logout</a></li>
+       </ul>
      </li>
 
      <% } else if(user.role=="others"){ %>
@@ -48,7 +55,7 @@ for(var i=0;i<user.notifications.length;i++)
          <li><a href="/logout">Logout</a></li>
        </ul>
      </li>
-<% } else { %>
+<% } else  { %>
   <li>  <a href="/notifications"><img src="/img/bell.png"><span style="display:none" id="notificationsBadge"  class="badge"> <%=count%></span></a></li>
         <li><a  href="/add-code">Add Templates</a></li>
 <li><a  class="dropdown-toggle" data-toggle="dropdown" href="#"><%= user.profile.name %></a>

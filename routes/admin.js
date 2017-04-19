@@ -7,6 +7,14 @@ router.get('/adminHome',function(req,res)
 {
   res.render('admin/adminHome');
 });
+router.get('/allusers',function(req,res)
+{
+  res.render('admin/allusers');
+});
+router.get('/templates',function(req,res)
+{
+  res.render('admin/templates');
+});
 
 
 router.get('/review',function(req,res)

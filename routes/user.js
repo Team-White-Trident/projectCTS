@@ -5,15 +5,17 @@ var passport = require('passport');
 var passportConf = require('../config/passport');
 
 
-
-router.route('/login')
+router.route('/getin')
     .get(function(req,res)
     {
     //  if(req.user) return res.redirect('/');
-      res.render('accounts/login', {message:req.flash('loginMessage')});
-    })
+      res.render('accounts/getin', {message:req.flash('loginMessage'),errors: req.flash('errors')});
+    });
+
+
+router.route('/login')
     .post(passport.authenticate('local-login',{
-      failureRedirect: '/login',
+      failureRedirect: '/getin#login',
       failureFlash: true
 
   }), (req, res) => {
@@ -29,12 +31,6 @@ router.route('/login')
 
 
 router.route('/signup')
-    .get(function(req,res,next)
-    {
-      res.render('accounts/signup', {
-      errors: req.flash('errors')
-     });
-    })
     .post(function(req,res,next)
       {
         var user = new User();
