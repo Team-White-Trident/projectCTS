@@ -7,25 +7,29 @@
    <script src="/js/languages/rainbow-custom.min.js" type="text/javascript" charset="utf-8" ></script>
 </head>
 
-<div class="container">
+<div class="container" style="margin:10px 0px 0px 0px;">
 
   <div class="row">
-    <div class="col-sm-6 col-md-4">
+      <div class="col-sm-10 col-md-offset-2">
+          <div class="row">
+    <div class="col-sm-4">
       <img class="img-circle img-responsive img-center" src="<%= user.profile.picture %>" alt ="">
 
       <br/>
-<h4>Name: <%= user.profile.name %></h4>
-<h4> Email: <%= user.email %></h4>
-</div>
-<div class="col-md-8">
+      <h4>Name: <%= user.profile.name %></h4>
+      <h4> Email: <%= user.email %></h4>
+    </div>
+      
+<div class="col-sm-8">
   <h2 class="text-center">History</h2>
-  <table class="table table-striped sticky-header">
-    <thead>
-      <tr>
-        <th>Code's Name</th>
-        <th>Language</th>
-        <th>Date and Time</th>
-      </tr>
+       <table class="table table-striped sticky-header">
+           <thead>
+             <tr>
+                <th>Code's Name</th>
+                <th>Language</th>
+                <th>Date and Time</th>
+             </tr>
+            </thead>
       <tbody>
 
         <% for(var i = user.history.length-1; i>=0; i--) {%>
@@ -70,10 +74,11 @@
 
      <% } %>
    </tbody>
-  </thead>
+
   </table>
 
 </div>
-
+          </div>
+</div>
 </div>
 </div>

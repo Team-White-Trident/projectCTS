@@ -3,6 +3,7 @@
   <head>
 
     <title>Coditec</title>
+
 <link rel="stylesheet" href="/css/bootstrap.min.css">
 <link rel="stylesheet" href="/css/font-awesome.min.css">
 <link rel="stylesheet" href ="/css/bootstrap-social.css">
@@ -11,35 +12,27 @@
 <link href="/css/mystyles.css" rel="stylesheet">
  <link rel="stylesheet" href="/css/bootstrap-select.min.css" />
  <link rel="stylesheet" href="/css/animate.min.css" />
-
-
-
-
-
-  </head>
+</head>
 
   <body>
- <div>
+ <div id="holder">
+     <div id="body">
 <% include ./partials/navbar %>
 
 
 <%- body -%>
 
 
-
-
-
-
-
+<div id="footer">
 <% include ./partials/footer %>
+     </div>
+      </div>
       </div>
       <script src="/js/badgecontroller.js"></script>
 	<script src="/js/bootstrap-select.min.js"></script>
   <script src="/js/jquery.min.js"></script>
 
     <script src="/js/bootstrap.min.js"></script>
-
-
 
   </body>
 </html>
