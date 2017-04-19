@@ -7,25 +7,25 @@ html {
 }
 
 body {
-  background: #c1bdba;
+  /*background: #c1bdba;*/
   font-family: 'Titillium Web', sans-serif;
 }
 
 a {
   text-decoration: none;
-  color: #1ab188;
+  color: #088DA5;
   -webkit-transition: .5s ease;
   transition: .5s ease;
 }
 a:hover {
-  color: #179b77;
+  color:#066A7C;
 }
 
 .form {
   background: rgba(19, 35, 47, 0.9);
   padding: 40px;
   max-width: 600px;
-  margin: 40px auto;
+  margin: 25px auto;
   border-radius: 4px;
   box-shadow: 0 4px 10px 4px rgba(19, 35, 47, 0.3);
 }
@@ -55,11 +55,11 @@ a:hover {
   transition: .5s ease;
 }
 .tab-group li a:hover {
-  background: #179b77;
+  background: #066A7C;
   color: #ffffff;
 }
 .tab-group .active a {
-  background: #1ab188;
+  background: #088DA5;
   color: #ffffff;
 }
 
@@ -74,7 +74,14 @@ h1 {
   margin: 0 0 40px;
 }
 
-label {
+.labelr{
+  position: absolute;
+  left: 13px;
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 22px;
+}
+
+.label {
   position: absolute;
   -webkit-transform: translateY(6px);
           transform: translateY(6px);
@@ -86,26 +93,26 @@ label {
   pointer-events: none;
   font-size: 22px;
 }
-label .req {
+.label .req {
   margin: 2px;
-  color: #1ab188;
+  color: #088DA5;
 }
 
-label.active {
+.label.active {
   -webkit-transform: translateY(50px);
           transform: translateY(50px);
   left: 2px;
   font-size: 14px;
 }
-label.active .req {
+.label.active .req {
   opacity: 0;
 }
 
-label.highlight {
+.label.highlight {
   color: #ffffff;
 }
 
-input, textarea {
+.input, textarea {
   font-size: 22px;
   display: block;
   width: 100%;
@@ -119,11 +126,10 @@ input, textarea {
   -webkit-transition: border-color .25s ease, box-shadow .25s ease;
   transition: border-color .25s ease, box-shadow .25s ease;
 }
-input:focus, textarea:focus {
+.input:focus, textarea:focus {
   outline: 0;
-  border-color: #1ab188;
+  border-color: #088DA5;
 }
-
 textarea {
   border: 2px solid #a0b3b0;
   resize: vertical;
@@ -157,14 +163,14 @@ textarea {
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: .1em;
-  background: #1ab188;
+  background: #088DA5;
   color: #ffffff;
   -webkit-transition: all 0.5s ease;
   transition: all 0.5s ease;
   -webkit-appearance: none;
 }
 .button:hover, .button:focus {
-  background: #179b77;
+  background:#066A7C;
 }
 
 .button-block {
