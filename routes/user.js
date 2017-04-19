@@ -15,7 +15,7 @@ router.route('/getin')
 
 router.route('/login')
     .post(passport.authenticate('local-login',{
-      failureRedirect: '/getin#login',
+      failureRedirect: '/getin',
       failureFlash: true
 
   }), (req, res) => {
