@@ -5,6 +5,13 @@ var passport = require('passport');
 var passportConf = require('../config/passport');
 
 
+router.route('/getin')
+    .get(function(req,res)
+    {
+    //  if(req.user) return res.redirect('/');
+      res.render('accounts/getin', {message:req.flash('loginMessage')});
+    });
+
 
 router.route('/login')
     .get(function(req,res)
