@@ -1,3 +1,27 @@
+html,body{
+    height: 100%
+}
+
+#holder{
+    min-height: 100%;
+    position:relative;
+}
+
+#body{
+    padding-bottom: 175px;    /* height of footer */
+}
+
+footer{
+    height: 175px; 
+    width:100%;
+    position: absolute;
+    left: 0;
+    bottom: 0; 
+}
+
+
+
+
 .anim {
   -webkit-animation-duration: 3s;
   -webkit-animation-delay: 2s;
@@ -57,7 +81,7 @@ line-height: 100px;
     font-weight: bold;
 }
 .content-text-h{
-    font-family: fantasy;
+    font-family:'Merriweather', serif;font-size:20px;
     font-size: 80px;
     line-height: 150px;
     color:  #088DA5;
@@ -67,10 +91,10 @@ line-height: 100px;
 }
 .content-text-p{
     line-height: 70px;
-    font-family: monospace;
+    font-family:'Merriweather', serif;
     font-size: 50px;
 /*     text-shadow: 0px 0px 2px #000000;*/
-    color: #EDB88B;
+    color: #FC4A1A;
 /*    font-weight: lighter;*/
 }
 .row-content {
@@ -87,6 +111,7 @@ line-height: 100px;
     background-color: #051923;
     margin:0px auto;
     padding: 0px 0px 0px 0px;
+    
 }
 
 .jumbotron {
@@ -122,19 +147,27 @@ body{
 }
 
 
-.navbar-inverse .navbar-nav > .active > a,
-.navbar-inverse .navbar-nav > .active > a:hover,
-.navbar-inverse .navbar-nav > .active > a:focus {
+.navbar-inverse .navbar-nav >li  > a
+{
+     color: #fff;
+    background: #088DA5;
+    border-radius: 2px;
+    transition: background 0.3s linear 0s,color 0.3s linear 0s;
+}
+.navbar-inverse .navbar-nav >li > a:hover,
+.navbar-inverse .navbar-nav >li > a:focus {
     color: #088DA5;
     background: #fff;
 }
 
+/*
 .navbar-inverse .navbar-nav > .open > a,
  .navbar-inverse .navbar-nav > .open > a:hover,
  .navbar-inverse .navbar-nav > .open > a:focus {
     color: #fff;
     background: #FFFFFF;
 }
+*/
 
 .carousel {
     background:#FFFFFF;
