@@ -167,6 +167,15 @@ body{
     border-radius: 2px;
     transition: background 0.3s linear 0s,color 0.3s linear 0s;
 }
+
+.navbar-inverse .navbar-nav >li  > a
+{
+     color: #fff;
+    background: #088DA5;
+    border-radius: 2px;
+    transition: background 0.3s linear 0s,color 0.3s linear 0s;
+}
+
 .navbar-inverse .navbar-nav >li > a:hover,
 .navbar-inverse .navbar-nav >li > a:focus {
     color: #088DA5;
