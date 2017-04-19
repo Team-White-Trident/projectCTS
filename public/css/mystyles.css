@@ -30,14 +30,14 @@ footer{
 
 
 .full {
-    background: url('../img/bg.jpg') no-repeat center center fixed;
+    background: url('../img/bg.gif') no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     background-size: cover;
     -o-background-size: cover;
 }
 .full-j {
-    background: url('../img/bgj.png') no-repeat center center fixed;
+    background: url('../img/bgj3.gif') no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     background-size: cover;
@@ -105,7 +105,20 @@ line-height: 100px;
 
 }
 .box{
-  box-shadow: 0px 0px 18px #888888;  border-radius: 15px;width:600; height:700;
+  box-shadow: 0px 0px 4px #888888;  border-radius: 2px;width:600; height:700;
+}
+.boxAdmin{
+  margin:10px 10px 0 0; box-shadow: 0px 0px 10px #888888;  border-radius: 2px;width:600; height:700;
+}
+.viewmore{
+  margin:80px 0 0 0;
+}
+.stopflow{
+  display:inline-block;
+   width:95%;
+   white-space: nowrap;
+   overflow:hidden !important;
+   text-overflow: ellipsis;
 }
 .row-footer{
     background-color: #051923;

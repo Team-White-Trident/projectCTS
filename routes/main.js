@@ -1,7 +1,5 @@
 
-
 var router = require('express').Router();
-//var Template = require('../models/template');
 var nodemailer = require('nodemailer');
 var User = require('../models/user');
 

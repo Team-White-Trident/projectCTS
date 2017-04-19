@@ -15,6 +15,7 @@ var secret = require('./config/secret');
 var User = require('./models/user');
 var Language = require('./models/language');
 var Template = require('./models/template');
+var CodeVerify = require('./models/codestoverify');
 
 
 mongoose.connect(secret.database ,function(err)
@@ -71,6 +72,29 @@ app.use(function(req,res,next)
   }).sort({count:-1,name:1});
 });
 
+app.use(function(req,res,next)
+{
+  CodeVerify.find({},function(err, codes){
+    if(err) return next(err);
+
+    res.locals.codeVerify = codes;
+  next();
+});
+});
+app.use(function(req,res,next)
+{
+  User.find({},function(err,users){
+    if(err) return next(err);
+    res.locals.allusers = users;
+
+  next();
+});
+});
+
+
+
+
+
 app.engine('ejs',engine);
 app.set('view engine', 'ejs');
 
@@ -78,12 +102,14 @@ var mainRoutes = require('./routes/main');
 var userRoutes = require('./routes/user');
 var adminRoutes = require('./routes/admin');
 var editorRoutes = require('./routes/editor');
+var developerRoutes = require('./routes/developer');
 app.use(mainRoutes);
 app.use(userRoutes);
 app.use(adminRoutes);
 app.use(editorRoutes);
+app.use(developerRoutes);
 
-app.listen(3000,function(err){
+app.listen(process.env.PORT||3000,function(err){
   if(err) throw err;
-  console.log("server is running at port " + secret.port);
+  console.log("server is running at port ");
 });

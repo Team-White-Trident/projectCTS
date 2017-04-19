@@ -1,5 +1,4 @@
 
-
 module.exports = {
 
   database:'mongodb://root:abc123@ds161069.mlab.com:61069/manisha',

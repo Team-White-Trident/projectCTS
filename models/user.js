@@ -16,8 +16,10 @@ var UserSchema = new Schema({
   },
 
   history :[{
+
    _id: {type: Schema.Types.ObjectId, ref:'Template'}
- }],
+
+}],
  notifications :[{
    creator:String,
    creatorEmail: String,
@@ -26,9 +28,7 @@ var UserSchema = new Schema({
   read: { type:Boolean, default : false}
 }]
 });
-//var user = new User();
-//user.email = "";
-//user.profile.name= "Manisha";
+
 UserSchema.pre('save',function(next)
 {
   var user = this;
