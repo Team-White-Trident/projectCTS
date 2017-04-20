@@ -16,15 +16,15 @@ router.route('/contactus')
             res.render('main/contactus');
           })
           .post(function(req, res) {
-          if(!req.user) return res.redirect('/login');
+          if(!req.user) return res.redirect('/getin');
           else {
           var mailOpts, smtpTrans;
            //Setup Nodemailer transport, I chose gmail. Create an application-specific password to avoid problems.
            smtpTrans = nodemailer.createTransport({
                service: 'Gmail',
                auth: {
-                   user: "teamwhitetrident@gmail.com",
-                   pass: "team@123"
+                  user: "teamwhitetrident@gmail.com",
+                  pass: "team@123"
                }
            });
            //Mail options
