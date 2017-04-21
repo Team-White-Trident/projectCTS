@@ -30,9 +30,8 @@ for(var i=0;i<user.notifications.length;i++)
       <li><a  href="/getin">Signup / Login</a>
      </li>
      <% } else if(user.email=="teamwhitetrident@gmail.com"){ %>
-
-        <li>  <a href="/notifications" ><img src="/img/bell.png"><span style="display:none" id="notificationsBadge"  class="badge"> <%=count%></span></a></li>
-       <li><a id="ausername" style="color:#fff" class="dropdown-toggle" data-toggle="dropdown" href="#" ><%= user.profile.name %></a>
+    <li>  <a href="/notifications"><i class = "fa fa-bell-o"></i><span style="display:none" id="notificationsBadge"  class="badge"> <%=count%></span></a></li>
+   <li><a id="ausername" style="color:#fff" class="dropdown-toggle" data-toggle="dropdown" href="#"><%= user.profile.name+ " " %><span class="caret"></span></a>
        <ul class="dropdown-menu">
          <li><a href="/addNotification">Notify Users</a></li>
          <li><a href="/add-template">Add template</a></li>
@@ -47,8 +46,8 @@ for(var i=0;i<user.notifications.length;i++)
      <% } else if(user.role=="others"){ %>
 
 
-         <li>  <a href="/notifications"><img src="/img/bell.png"><span style="display:none" id="notificationsBadge"  class="badge"> <%=count%></span></a></li>
-       <li><a id="ausername" style="color:#fff" class="dropdown-toggle" data-toggle="dropdown" href="#"><%= user.profile.name %></a>
+       <li>  <a href="/notifications"><i class = "fa fa-bell-o"></i><span style="display:none" id="notificationsBadge"  class="badge"> <%=count%></span><span class="hov">Notifications</span></a></li>
+       <li><a id="ausername" class="dropdown-toggle" data-toggle="dropdown" href="#"><%= user.profile.name + " " %><span class="caret"></span></a>
        <ul class="dropdown-menu">
          <li><a href="/profile">Profile</a></li>
           <li><a href="/aceEditor">Editor</a></li>
@@ -59,14 +58,17 @@ for(var i=0;i<user.notifications.length;i++)
         <div class="profilepic" id="profilepic-small" ></div>
      </li>
 <% } else  { %>
-  <li>  <a href="/notifications" ><img src="/img/bell.png"><span style="display:none" id="notificationsBadge"  class="badge"> <%=count%></span></a></li>
-        <li><a  style="color:#fff" href="/add-code">Add Templates</a></li>
-<li><a id="ausername" style="color:#fff" class="dropdown-toggle" data-toggle="dropdown" href="#"><%= user.profile.name %></a>
+
+        <li>  <a href="/notifications"><i class = "fa fa-bell-o"></i><span style="display:none" id="notificationsBadge"  class="badge"> <%=count%></span><span class="hov">Notifications</span></a></li>
+
+<li><a id="ausername" class="dropdown-toggle" data-toggle="dropdown" href="#"><%= user.profile.name + " " %><span class="caret"></span></a>
+
 
 <ul class="dropdown-menu">
   <li><a href="/profile">Profile</a></li>
    <li><a href="/aceEditor">Editor</a></li>
-   <li><a href="/logout">Logout</a></li>
+   <li><a  href="/add-code">Add Templates</a></li>
+    <li><a href="/logout">Logout</a></li>
 </ul>
 </li>
 <li>
