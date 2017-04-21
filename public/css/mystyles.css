@@ -19,7 +19,7 @@ footer{
     bottom: 0;
 }
 
-.fa { transform: scale(1.5,1.5); }
+.fa { transform: scale(1.2,1.2); }
 
 li > a > span.hov{
     display: none;

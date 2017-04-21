@@ -53,14 +53,15 @@ for(var i=0;i<user.notifications.length;i++)
      </li>
 <% } else  { %>
         <li>  <a href="/notifications"><i class = "fa fa-bell-o"></i><span style="display:none" id="notificationsBadge"  class="badge"> <%=count%></span><span class="hov">Notifications</span></a></li>
-        <li><a  href="/add-code">Add Templates</a></li>
+        
 <li><a  class="dropdown-toggle" data-toggle="dropdown" href="#"><%= user.profile.name + " " %><span class="caret"></span></a>
     
 
 <ul class="dropdown-menu">
   <li><a href="/profile">Profile</a></li>
    <li><a href="/aceEditor">Editor</a></li>
-   <li><a href="/logout">Logout</a></li>
+   <li><a  href="/add-code">Add Templates</a></li>
+    <li><a href="/logout">Logout</a></li>
 </ul>
 </li>
   <% } %>
