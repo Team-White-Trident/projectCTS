@@ -2,11 +2,11 @@
 
 <script type="text/javascript">
 function validateForm() {
-
+var letters = /^[A-Za-z]+$/;
  var ln = document.forms["regForm"]["name"].value;
 
- if (ln == "") {
-     alert("Name must be filled out correctly");
+ if (ln == ""||!ln.match(letters)) {
+     alert("Please enter a valid name");
      return false;
  }
 var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[09]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;

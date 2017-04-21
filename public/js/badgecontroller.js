@@ -1,5 +1,4 @@
 $(function(){
-
     var count=  $('#notificationsBadge').text();
 
     if(count==0){
@@ -9,4 +8,5 @@ $(function(){
       $("#notificationsBadge").show();
       $("#notificationsBadge").html(count);
     }
+
 });
