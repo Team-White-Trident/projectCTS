@@ -190,5 +190,5 @@ function swap_values(current_tab,last_tab) {
 
 function handleModal()
 {
-    
+
 }
