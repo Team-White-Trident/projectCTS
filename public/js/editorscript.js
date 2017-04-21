@@ -3,7 +3,7 @@ var session;
 var tracker = {
                ansic:"#include<stdio.h>\nvoid main(){\n\n}",
                cpp11:"#include<iostream>\nusing namespace std;\nint main(){\nreturn 0;\n}",
-               java:"import java.util.*;\nclass template{\npublic static void main(String arg[]){\n\n\t}\n}",
+               java:"import java.util.*;\nclass Template{\npublic static void main(String arg[]){\n\n\t}\n}",
                python:"var x =raw_input();\n print x;"};
 
 
@@ -190,5 +190,5 @@ function swap_values(current_tab,last_tab) {
 
 function handleModal()
 {
-    
+
 }

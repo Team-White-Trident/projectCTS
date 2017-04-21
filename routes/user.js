@@ -15,7 +15,7 @@ router.route('/getin')
 
 router.route('/login')
     .post(passport.authenticate('local-login',{
-      failureRedirect: '/getin#login',
+      failureRedirect: '/getin',
       failureFlash: true
 
   }), (req, res) => {
@@ -45,7 +45,7 @@ router.route('/signup')
         if(existingUser)
         {
             req.flash('errors','Account with that email already exists');
-          return res.redirect('/signup');
+          return res.redirect('/getin');
         }
         else {
 

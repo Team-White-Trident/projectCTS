@@ -60,6 +60,7 @@ passport.use(new FacebookStrategy(secret.facebook,function(token, refreshToken,p
       newUser.tokens.push({kind: 'facebook',token: token});
       newUser.profile.name = profile.displayName;
       newUser.profile.picture = 'https://graph.facebook.com/' + profile.id + '/picture?type=large';
+      newUser.role="others";
       newUser.save(function(err)
     {
       if(err) throw err;
@@ -84,6 +85,7 @@ passport.use(new GithubStrategy(secret.github,function(token, refreshToken,profi
       newUser1.profile.name = profile.displayName;
     //  newUser1.profile.picture = 'https://graph.github.com/' + profile.id + '/picture?type=large';
       newUser1.profile.picture = 'https://avatars1.githubusercontent.com/u/'+  profile.id +'?v=3&s=400';
+      newUser1.role="others";
       newUser1.save(function(err)
     {
       if(err) throw err;
