@@ -45,7 +45,7 @@ router.route('/signup')
         if(existingUser)
         {
             req.flash('errors','Account with that email already exists');
-          return res.redirect('/signup');
+          return res.redirect('/getin');
         }
         else {
 
