@@ -8,9 +8,9 @@ var tracker = {
 
 
 var editor = ace.edit("editor");
-document.getElementById('editor').style.fontSize='12px';
+document.getElementById('editor').style.fontSize='16px';
 
- editor.setTheme("ace/theme/textmate");
+ editor.setTheme("ace/theme/monokai");
         session = editor.getSession();
         session.setUseWrapMode(true);
         session.setUseWorker(false);
