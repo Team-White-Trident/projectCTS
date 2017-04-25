@@ -19,11 +19,24 @@ footer{
     bottom: 0;
 }
 
+
+#profilepic-small {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #512DA8;
+  font-size: 30px;
+  color: #fff;
+  text-align: center;
+  line-height: 43px;
+  margin: 5px 0;
+}
 .fa { transform: scale(1.2,1.2); }
 
 li > a > span.hov{
     display: none;
     position: relative;
+
 }
 
 li:hover span.hov{

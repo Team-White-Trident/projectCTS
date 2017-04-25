@@ -4,7 +4,7 @@ var tracker = {
                ansic:"#include<stdio.h>\nvoid main(){\n\n}",
                cpp11:"#include<iostream>\nusing namespace std;\nint main(){\nreturn 0;\n}",
                java:"import java.util.*;\nclass Template{\npublic static void main(String arg[]){\n\n\t}\n}",
-               python:"var x =raw_input();\n print x;"};
+               python:"x = 5\ny = 4\nz=x+y\nprint \"Sum=\",z"};
 
 
 var editor = ace.edit("editor");
@@ -30,22 +30,29 @@ function myfunc(){
 	editor.setValue(tracker.ansic);
    // session=editor.getSession();
 	editor.getSession().setMode("ace/mode/c_cpp");
+  editor.gotoLine(editor.session.getLength());
 
 	}
 	if(btn.id=="cpp_11"){
 	//alert("hello");
 	editor.setValue(tracker.cpp11);
-       editor.getSession().setMode("ace/mode/c_cpp");
+  editor.getSession().setMode("ace/mode/c_cpp");
+  editor.gotoLine(editor.session.getLength());
+
 	}
 
 	if(btn.id=="java__"){
 	editor.setValue(tracker.java);
 	editor.getSession().setMode("ace/mode/java");
-	}
+  editor.gotoLine(editor.session.getLength());
+
+  }
 	if(btn.id=="python__"){
 	editor.setValue(tracker.python);
-       editor.getSession().setMode("ace/mode/java");
-	}
+  editor.getSession().setMode("ace/mode/java");
+  editor.gotoLine(editor.session.getLength());
+
+  }
 }
 
 
@@ -87,36 +94,6 @@ var value = $('.nav-tabs .active').text().trim();
             }
         );
     }
-
-
-
-function onChangeTabs(identifier) {
-
-    if(identifier == "ansi_c")
-        {
-
-            editor.setValue(tracker.ansic);
-            editor.getSession().setMode("ace/mode/c_cpp");
-        }
-
-    else if(identifier == "cpp_11")
-        {
-            editor.setValue(tracker.cpp11);
-            editor.getSession().setMode("ace/mode/c_cpp");
-        }
-    else if(identifier == "java__")
-        {
-            editor.setValue(tracker.java);
-            editor.getSession().setMode("ace/mode/java");
-        }
-    else if(identifier == "python__")
-        {
-            editor.setValue(tracker.python);
-            editor.getSession().setMode("ace/mode/python");
-        }
-
-}
-
 
 function saveTextAsFile()
 {
@@ -176,19 +153,23 @@ function destroyClickedElement(event)
     document.body.removeChild(event.target);
 }
 
-/*
-function swap_values(current_tab,last_tab) {
-     //alert("Yaha tk chal rha h iska matlb.");
-   // alert("ggggggg");
-    identifier = current_tab;
-    onChangeTabs(identifier);
-
-}
-*/
-
-
-
-function handleModal()
-{
+function reset(){
+  var value = $('.nav-tabs .active').text().trim();
+  if(value=="C"){
+    editor.setValue(tracker.ansic);
+      editor.gotoLine(editor.session.getLength());
+    }
+  if(value=="CPP"){
+    editor.setValue(tracker.cpp11);
+      editor.gotoLine(editor.session.getLength());
+  }
+  if(value=="JAVA"){
+    editor.setValue(tracker.java);
+      editor.gotoLine(editor.session.getLength());
+  }
+  if(value=="PYTHON"){
+        editor.setValue(tracker.python);
+        editor.gotoLine(editor.session.getLength());
+  }
 
 }
