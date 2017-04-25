@@ -43,7 +43,10 @@ for(var i=0;i<user.notifications.length;i++)
         <div class="profilepic" id="profilepic-small" >A</div>
      </li>
 
-     <% } else if(user.role=="others"){ %>
+     <% } else if(user.role=="others"){
+                var path=user.profile.picture;
+
+        %>
 
 
        <li>  <a href="/notifications"><i class = "fa fa-bell-o"></i><span style="display:none" id="notificationsBadge"  class="badge"> <%=count%></span><span class="hov">Notifications</span></a></li>
@@ -55,13 +58,23 @@ for(var i=0;i<user.notifications.length;i++)
        </ul>
      </li>
      <li>
-        <div class="profilepic" id="profilepic-small" ></div>
+       <%
+    <!-- //   alert(path); -->
+           if(path.charAt(11)==='v'){ %>
+             <div class="profilepic" id="profilepic-small" ></div>
+         <%  }else{%>
+             <img class=" profilcePicFB img-circle img-responsive img-center" src="<%= user.profile.picture %>" alt ="profilePic">
+           <% }
+       %>
+
      </li>
-<% } else  { %>
+<% } else  {
+        var path=user.profile.picture;
+  %>
 
         <li>  <a href="/notifications"><i class = "fa fa-bell-o"></i><span style="display:none" id="notificationsBadge"  class="badge"> <%=count%></span><span class="hov">Notifications</span></a></li>
 
-<li><a id="ausername" class="dropdown-toggle" data-toggle="dropdown" href="#"><%= user.profile.name + " " %><span class="caret"></span></a>
+<li><a id="ausername" class="dropdown-toggle" data-toggle="dropdown" href="#"><%= user.profile.name  + " " %><span class="caret"></span></a>
 
 
 <ul class="dropdown-menu">
@@ -72,7 +85,14 @@ for(var i=0;i<user.notifications.length;i++)
 </ul>
 </li>
 <li>
-  <div class="profilepic" id="profilepic-small" ></div>
+  <%
+      if(path.charAt(11)==='v'){ %>
+        <div class="profilepic" id="profilepic-small" ></div>
+    <%  }else{%>
+        <img class=" profilcePicFB  img-circle img-responsive img-center" src="<%= user.profile.picture %>" alt ="profilePic">
+      <% }
+  %>
+
 </li>
   <% } %>
     </ul>

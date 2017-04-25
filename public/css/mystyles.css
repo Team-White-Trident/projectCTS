@@ -29,7 +29,12 @@ footer{
   color: #fff;
   text-align: center;
   line-height: 43px;
-  margin: 5px 0px 0px 10px;
+  margin: 5px 5px 5px 10px;
+}
+.profilcePicFB{
+  width: 40px;
+  height: 40px;
+  margin: 5px 5px 5px 10px ;
 }
 .fa { transform: scale(1.2,1.2); }
 
