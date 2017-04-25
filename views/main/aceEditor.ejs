@@ -7,11 +7,12 @@
 
  <div class="container">
       <div class="row row-content">
-           <div class="btn-group pull-right" style="margin:0px 0px 0px 0px;">
+           <div class="btn-group pull-right" style="margin:0px 25px 0px 0px;">
           <button class="button btn btn-primary" onclick="compile()">Compile</button>
           <button class="button btn btn-primary" onclick="run()">Run</button>
-          <button class="button btn btn-primary" onclick="saveTextAsFile()">Download Code</button>
-          <a href="/addNotification" class="btn btn-primary" >Give Suggestions</a>
+               <button class="button btn btn-primary" onclick="saveTextAsFile()"><span class="glyphicon glyphicon-download-alt"></span> Download Code</button>
+            <button onclick="reset()" class="btn btn-primary">Reset</button>
+          
           </div>
           <div>
               <ul class="nav nav-tabs" role="tablist">
@@ -82,7 +83,7 @@
 
             </div>
 
-             <button style="margin:400px 0 0 360px" onclick="reset()" class="btn btn-primary">Reset</button>
+             <a  href="/addNotification" style="margin:400px 0 0 300px" class="btn btn-primary" >Give Suggestions</a>
          </div>
           </div>
 
