@@ -55,7 +55,15 @@ for(var i=0;i<user.notifications.length;i++)
        </ul>
      </li>
      <li>
-        <div class="profilepic" id="profilepic-small" ></div>
+       <% var path=user.profile.picture;
+       alert(path);
+           if(path.charAt(3)==='v'){ %>
+             <div class="profilepic" id="profilepic-small" ></div>
+         <%  }else{%>
+             <img class="  img-circle img-responsive img-center" src="<%= user.profile.picture %>" alt ="profilePic">
+           <% }
+       %>
+
      </li>
 <% } else  { %>
 
@@ -72,7 +80,14 @@ for(var i=0;i<user.notifications.length;i++)
 </ul>
 </li>
 <li>
-  <div class="profilepic" id="profilepic-small" ></div>
+  <% var path=user.profile.picture;
+      if(path.charAt(3)==='v'){ %>
+        <div class="profilepic" id="profilepic-small" ></div>
+    <%  }else{%>
+        <img class=" profilcePicFB  img-circle img-responsive img-center" src="<%= user.profile.picture %>" alt ="profilePic">
+      <% }
+  %>
+
 </li>
   <% } %>
     </ul>
