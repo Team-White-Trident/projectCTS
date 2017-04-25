@@ -56,11 +56,11 @@ for(var i=0;i<user.notifications.length;i++)
      </li>
      <li>
        <% var path=user.profile.picture;
-       alert(path);
+    <!-- //   alert(path); -->
            if(path.charAt(3)==='v'){ %>
              <div class="profilepic" id="profilepic-small" ></div>
          <%  }else{%>
-             <img class="  img-circle img-responsive img-center" src="<%= user.profile.picture %>" alt ="profilePic">
+             <img class=" profilcePicFB img-circle img-responsive img-center" src="<%= user.profile.picture %>" alt ="profilePic">
            <% }
        %>
 
