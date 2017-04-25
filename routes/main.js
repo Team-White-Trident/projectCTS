@@ -29,11 +29,11 @@ router.route('/contactus')
            });
            //Mail options
            mailOpts = {
-               from: req.body.name + ' &lt;' + req.body.email + '&gt;', //grab form data from the request body object
+               from: req.body.name + ' &lt;' + user.email + '&gt;', //grab form data from the request body object
                to: 'teamwhitetrident@gmail.com',
                subject: 'Website contact form',
 
-               text: req.body.feedback + '\n'+'sender : ' + req.body.email +' ' +'<'+ req.body.name + ' '+req.body.lastname +'>'
+               text: req.body.feedback + '\n'+'sender : ' + user.email +' ' +'<'+ req.body.name + ' '+req.body.lastname +'>'
 
            };
 
