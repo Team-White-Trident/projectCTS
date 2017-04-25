@@ -85,6 +85,9 @@ vertical-align: middle;
 .btn-primary{
     background:#088DA5;
 }
+.panel > .panel-heading{
+    background:#088DA5;
+}
 
 .coditec{
     text-shadow: 0px 0px 20px #000000;
@@ -100,7 +103,7 @@ line-height: 100px;
     font-family:'Merriweather', serif;font-size:20px;
     font-size: 80px;
     line-height: 150px;
-    color:  #088DA5;
+   /* color:  #088DA5;*/
      text-shadow: 0px 0px 2px #000000;
     font-weight: bold;
 
@@ -110,7 +113,7 @@ line-height: 100px;
     font-family:'Merriweather', serif;
     font-size: 50px;
 /*     text-shadow: 0px 0px 2px #000000;*/
-    color: #FC4A1A;
+    /*color: #FC4A1A;*/
 /*    font-weight: lighter;*/
 }
 .row-content {
