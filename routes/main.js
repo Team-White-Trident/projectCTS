@@ -13,12 +13,7 @@ router.get('/about', function(req, res) {
 
 router.route('/contactus')
           .get(function(req, res) {
-          //  if(req.user){
             res.render('main/contactus');
-          // }else {
-          //   req.flash('errors','You need to signup first!');
-          // return res.redirect('/getin');
-          // }
           })
           .post(function(req, res) {
           if(!req.user){

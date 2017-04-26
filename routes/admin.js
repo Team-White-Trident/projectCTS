@@ -1,7 +1,9 @@
 var router = require('express').Router();
+var User = require('../models/user');
 var Template = require('../models/template');
 var Language = require('../models/language');
 var CodeVerify = require('../models/codestoverify');
+var Userstochange = require('../models/userstochange');
 
 router.get('/adminHome',function(req,res)
 {
@@ -14,6 +16,44 @@ router.get('/allusers',function(req,res)
 router.get('/templates',function(req,res)
 {
   res.render('admin/templates');
+});
+
+
+
+router.route('/reviewuser')
+.get(function(req,res){
+    res.render('admin/reviewuser');
+})
+.post(function(req,res,next){
+  User.findOne({email:req.body.email},function(err,user){
+    if(err) return next(err);
+    user.role="developer";
+
+    user.save(function(err){
+      if(err) (err);
+    });
+
+    Userstochange.remove({email:req.body.email},function(err){
+      if(err) return err;
+      else{
+        console.log(req.body.email+"Removed");
+      }
+    });
+  });
+  res.redirect('/reviewuser');
+});
+
+router.route('/rejectuser')
+.post(function(req,res) {
+
+  Userstochange.remove({email:req.body.email},function(err){
+    if(err) next (err);
+    else{
+      console.log(req.body.email+"Removed");
+
+    }
+  });
+    res.redirect('/reviewuser');
 });
 
 

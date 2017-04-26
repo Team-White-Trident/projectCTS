@@ -1,9 +1,76 @@
 <% layout('layout') -%>
 <br/>
 <br/>
-
 <div class="container">
-  <h3 style="color:#088DA5">Users</h3>
+<!----------------------------------------->
+<h3 style="color:#088DA5">Pending User Reviews</h3>
+<div class="row" >
+<div class="col-xs-12 col-sm-12 ">
+      <div class="row">
+        <% var i=0;
+        while(i<3&&i<alluserstochange.length) { %>
+          <div class="boxAdmin col-sm-3" style="width:25%">
+
+            <h3 class="stopflow" ><%= alluserstochange[i].name %></h3>
+            <h4 class="stopflow" style="color:blue"><%= alluserstochange[i].email %></h4>
+
+          </div>
+
+  <% i++;}
+    if(i==0){%>
+      <br/><h4>No pending reviews..</h4>
+  <%  }else{ %>
+
+    <div class="col-sm-3" style="width:20%">
+      <form action="/reviewuser">
+        <button type=submit class="btn btn-primary viewmore">View More..</button>
+      </form>
+    </div>
+
+
+
+  <% } %>
+
+</div>
+</div>
+</div>
+<br/>
+
+<!---------------------------------------->
+  <h3 style="color:#088DA5">Pending Templates Reviews</h3>
+  <div class="row" >
+  <div class="col-xs-12 col-sm-12 ">
+        <div class="row">
+          <% var i=0;
+          while(i<3&&i<codeVerify.length) { %>
+            <div class="boxAdmin col-sm-3" style="width:25%">
+
+              <h3 class="stopflow" style="color:red"><%= codeVerify[i].name %></h3>
+              <h4 class="stopflow" style="color:blue"><%= codeVerify[i].creator %></h4>
+
+            </div>
+
+    <% i++;}
+      if(i==0){%>
+        <br/><h4>No pending reviews..</h4>
+    <%  }else{ %>
+
+      <div class="col-sm-3" style="width:20%">
+        <form action="/review">
+          <button type=submit class="btn btn-primary viewmore">View More..</button>
+        </form>
+      </div>
+
+
+
+    <% } %>
+
+  </div>
+  </div>
+  </div>
+  <br/>
+  <!------------------------------------------>
+  <h3 style="color:#088DA5">Latest users joined</h3>
   <div class="row" >
 <div class="col-xs-12 col-sm-12 ">
         <div class="row">
@@ -27,40 +94,7 @@
 </div>
 
 <br/>
-
-<h3 style="color:#088DA5">Pending Reviews</h3>
-<div class="row" >
-<div class="col-xs-12 col-sm-12 ">
-      <div class="row">
-        <% var i=0;
-        while(i<3&&i<codeVerify.length) { %>
-          <div class="boxAdmin col-sm-3" style="width:25%">
-
-            <h3 class="stopflow" style="color:red"><%= codeVerify[i].name %></h3>
-            <h4 class="stopflow" style="color:blue"><%= codeVerify[i].creator %></h4>
-
-          </div>
-
-  <% i++;}
-    if(i==0){%>
-      <br/><h4>No pending reviews..</h4>
-  <%  }else{ %>
-
-    <div class="col-sm-3" style="width:20%">
-      <form action="/review">
-        <button type=submit class="btn btn-primary viewmore">View More..</button>
-      </form>
-    </div>
-
-
-
-  <% } %>
-
-</div>
-</div>
-</div>
-<br/>
-
+<!--------------------------------------------------->
     <h3 style="color:#088DA5">Templates</h3>
      <div class="row">
        <div class="col-xs-12 col-sm-12 ">
