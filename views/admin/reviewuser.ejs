@@ -1,0 +1,45 @@
+<% layout('layout') -%>
+
+<head>
+   <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+   <script src="/js/verifyUser.js" type="text/javascript" charset="utf-8"></script>
+   <script src="/js/profilePage.js" type="text/javascript" charset="utf-8"></script>
+</head>
+
+
+<div class="container">
+
+  <div class="row">
+
+    <div class="col-md-8">
+      <h2 class="text-center">Users to Review</h2>
+      <table class="table table-striped sticky-header">
+        <thead>
+          <tr>
+            <th>User's Name</th>
+            <th>Email</th>
+          </tr>
+          <tbody>
+
+            <% for(var i = 0; i<alluserstochange.length; i++) {%>
+              <tr>
+
+                     <td><%= alluserstochange[i].name %></td>
+                     <td><%= alluserstochange[i].email%></td>
+                     <td><button name="verifyButton" type="button" class="open-verifyDialog btn btn-success" data-id="<%=alluserstochange[i].name %>" data-email="<%=alluserstochange[i].email %>">Make Developer</button></td>
+                     <td><button name="rejectButton" type="button"class=" open-rejectDialog btn btn-danger" data-id="<%=alluserstochange[i].name %>" data-email="<%=alluserstochange[i].email %>">Reject</button></td>
+              </tr>
+
+         <%
+       } %>
+
+
+
+       </tbody>
+      </thead>
+      </table>
+
+    </div>
+
+    </div>
+    </div>

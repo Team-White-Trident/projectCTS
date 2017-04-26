@@ -26,6 +26,11 @@ var UserSchema = new Schema({
    notificationName: String,
   description: String,
   read: { type:Boolean, default : false}
+}],
+projects:[{
+  projectname:String,
+  projectLanguage:String,
+  project:String,
 }]
 });
 

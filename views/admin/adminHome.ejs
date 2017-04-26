@@ -1,69 +1,28 @@
 <% layout('layout') -%>
 <br/>
 <br/>
-
 <div class="container">
-  <h3 style="color:#088DA5">Users</h3>
-  <div class="row" >
-<div class="col-xs-12 col-sm-12 ">
-        <div class="row">
-          <% for(var i=0; i<3;i++) { %>
-            <div style="margin:0px 2px 0px 2px;padding:0px 1px 0px 1px"class="panel panel-primary col-sm-3">
-                
-               <div class="panel-heading">
-                     <a href="/allusers">
-                      <h4 class="stopflow" style="color:#fff"><%= allusers[i].profile.name %></h4>
-                     </a>
-          </div>
-                
-            <div class="panel-body">   
-                <a href="/allusers">
-                    <h4 class="stopflow" style="color:blue"><%= allusers[i].email %></h4>
-                </a>
-                </div>
-            </div>
-            
-    <% } %>
-    <div class="col-sm-3" style="width:20%">
-      <form action="/allusers">
-        <button type=submit class="btn btn-primary viewmore">View More..</button>
-      </form>
-    </div>
-            
-  </div>
-  </div>
-</div>
-
-<br/>
-
-<h3 style="color:#088DA5">Pending Reviews</h3>
+<!----------------------------------------->
+<h3 style="color:#088DA5">Pending User Reviews</h3>
 <div class="row" >
 <div class="col-xs-12 col-sm-12 ">
       <div class="row">
         <% var i=0;
-        while(i<3&&i<codeVerify.length) { %>
-          
-        <div style="margin:0px 2px 0px 2px;padding:0px 1px 0px 1px"class="panel panel-primary col-sm-3">
-             <div class="panel-heading">
-             <a href="/review">
-                 <h4 class="stopflow" style="color:#fff"><%= codeVerify[i].name %></h4></a>
-            </div>
-            <div class="panel-body"> 
-              <a href="/review"> 
-                 <h4 class="stopflow" style="color:blue"><%= codeVerify[i].creator %></h4></a>
-            </div>
+        while(i<3&&i<alluserstochange.length) { %>
+          <div class="boxAdmin col-sm-3" style="width:25%">
 
-          
-         </a>
-        </div>
-          
+            <h3 class="stopflow" ><%= alluserstochange[i].name %></h3>
+            <h4 class="stopflow" style="color:blue"><%= alluserstochange[i].email %></h4>
+
+          </div>
+
   <% i++;}
     if(i==0){%>
       <br/><h4>No pending reviews..</h4>
   <%  }else{ %>
 
     <div class="col-sm-3" style="width:20%">
-      <form action="/review">
+      <form action="/reviewuser">
         <button type=submit class="btn btn-primary viewmore">View More..</button>
       </form>
     </div>
@@ -77,23 +36,77 @@
 </div>
 <br/>
 
+<!---------------------------------------->
+  <h3 style="color:#088DA5">Pending Templates Reviews</h3>
+  <div class="row" >
+  <div class="col-xs-12 col-sm-12 ">
+        <div class="row">
+          <% var i=0;
+          while(i<3&&i<codeVerify.length) { %>
+            <div class="boxAdmin col-sm-3" style="width:25%">
+
+              <h3 class="stopflow" style="color:red"><%= codeVerify[i].name %></h3>
+              <h4 class="stopflow" style="color:blue"><%= codeVerify[i].creator %></h4>
+
+            </div>
+
+    <% i++;}
+      if(i==0){%>
+        <br/><h4>No pending reviews..</h4>
+    <%  }else{ %>
+
+      <div class="col-sm-3" style="width:20%">
+        <form action="/review">
+          <button type=submit class="btn btn-primary viewmore">View More..</button>
+        </form>
+      </div>
+
+
+
+    <% } %>
+
+  </div>
+  </div>
+  </div>
+  <br/>
+  <!------------------------------------------>
+  <h3 style="color:#088DA5">Latest users joined</h3>
+  <div class="row" >
+<div class="col-xs-12 col-sm-12 ">
+        <div class="row">
+          <% for(var i=0; i<3;i++) { %>
+            <div class="boxAdmin col-sm-3" style="width:25%">
+
+              <h3 class="stopflow" style="color:red"><%= allusers[i].profile.name %></h3>
+              <h4 class="stopflow" style="color:blue"><%= allusers[i].email %></h4>
+
+            </div>
+
+    <% } %>
+    <div class="col-sm-3" style="width:20%">
+      <form action="/allusers">
+        <button type=submit class="btn btn-primary viewmore">View More..</button>
+      </form>
+    </div>
+
+  </div>
+  </div>
+</div>
+
+<br/>
+<!--------------------------------------------------->
     <h3 style="color:#088DA5">Templates</h3>
      <div class="row">
        <div class="col-xs-12 col-sm-12 ">
         <div class="row">
         <% for(var i=0; i<3;i++) { %>
-        <div style="margin:0px 2px 0px 2px;padding:0px 1px 0px 1px"class="panel panel-primary col-sm-3">
-         <div class="panel-heading">
-         <a href="/templates"> 
-              <h4 class="stopflow" style="color:#fff"><%= templates[i].name %></h4>
-         </a>
-         </div>
-          <div class="panel-body">     
-           <a href="/templates">   
+
+          <div class="boxAdmin col-sm-3" style="width:25%">
+  <h3 class="stopflow" style="color:red"><%= templates[i].name %></h3>
               <h4 style="color:blue"><%= templates[i].language %></h4>
-           </a>
-           </div>
-         </div>
+
+            </div>
+
 
           <% } %>
           <div class="col-sm-3" style="width:20%">

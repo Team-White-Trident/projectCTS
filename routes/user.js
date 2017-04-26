@@ -72,7 +72,7 @@ User
 {
   if(err) return next(err);
 
-  res.render('accounts/profile', {user: user});
+  res.render('accounts/profile', {user: user,message:req.flash('success'),errors: req.flash('errors')});
  });
 
 });

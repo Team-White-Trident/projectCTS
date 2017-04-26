@@ -16,7 +16,7 @@ var User = require('./models/user');
 var Language = require('./models/language');
 var Template = require('./models/template');
 var CodeVerify = require('./models/codestoverify');
-
+var Userstochange = require('./models/userstochange');
 
 mongoose.connect(secret.database ,function(err)
 {
@@ -52,6 +52,14 @@ app.use(function(req,res,next)
 {
   res.locals.user=req.user;
   next();
+});
+
+app.use(function(req,res,next){
+    Userstochange.find({},function(err,users){
+      if(err)return next(err);
+      res.locals.alluserstochange = users;
+      next();
+    });
 });
 
 app.use(function(req,res,next)

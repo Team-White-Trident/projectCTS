@@ -16,8 +16,11 @@ router.route('/contactus')
             res.render('main/contactus');
           })
           .post(function(req, res) {
-          if(!req.user) return res.redirect('/getin');
-          else {
+          if(!req.user){
+            req.flash('errors','You need to signup first!');
+            return res.redirect('/getin');
+          }
+        else {
           var mailOpts, smtpTrans;
            //Setup Nodemailer transport, I chose gmail. Create an application-specific password to avoid problems.
            smtpTrans = nodemailer.createTransport({
@@ -29,11 +32,11 @@ router.route('/contactus')
            });
            //Mail options
            mailOpts = {
-               from: req.body.name + ' &lt;' + user.email + '&gt;', //grab form data from the request body object
+               from: req.body.name + ' &lt;' + req.user.email + '&gt;', //grab form data from the request body object
                to: 'teamwhitetrident@gmail.com',
                subject: 'Website contact form',
 
-               text: req.body.feedback + '\n'+'sender : ' + user.email +' ' +'<'+ req.body.name + ' '+req.body.lastname +'>'
+               text: req.body.feedback + '\n'+'sender : ' + req.user.email +' ' +'<'+ req.body.name + ' '+req.body.lastname +'>'
 
            };
 
