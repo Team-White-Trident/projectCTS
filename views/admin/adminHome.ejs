@@ -86,7 +86,9 @@
   <div class="row" >
 <div class="col-xs-12 col-sm-12 ">
         <div class="row">
-          <% for(var i=0; i<6;i++) { %>
+          <% 
+            var i=0;
+            while(i<6&&i<allusers.length){ %>
             
              <div style="margin:0px 2px 10px 2px;padding:0px 1px 0px 1px;"class="panel panel-success col-sm-3">
               <div class="panel-heading">
@@ -101,7 +103,7 @@
               </div>
             </div>         
             
-    <% } %>
+    <%i++; } %>
   </div>
   </div>
 </div>
