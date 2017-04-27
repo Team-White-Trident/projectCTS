@@ -29,7 +29,7 @@ function changeprofile(){
               alert("Successfully Applied! Wait till approvement");
          })
        .fail(function(data) {
-         alert(data);
+        // alert(data);
               alert("Successfully Applied! Wait till it is approved");
        }
    );

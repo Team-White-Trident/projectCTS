@@ -14,8 +14,10 @@ router.get('/about', function(req, res) {
 router.route('/contactus')
           .get(function(req, res) {
             res.render('main/contactus');
-          })
-          .post(function(req, res) {
+          });
+
+router.route('/contact')
+    .post(function(req, res) {
           if(!req.user){
             req.flash('errors','You need to signup first!');
             return res.redirect('/getin');
