@@ -30,8 +30,7 @@
                      <td><%= codeVerify[i].language %></td>
                      <td><%= codeVerify[i].creator%> (<%=codeVerify[i].creatoremail %>)</td>
                     <td><%= codeVerify[i]._id.getTimestamp() %></td>
-                    <td><button name="verifyButton" type="button" class="open-verifyDialog btn btn-success" data-id="<%=codeVerify[i].name %>" data-lang="<%=codeVerify[i].language %>"data-code="<%= codeVerify[i].code %>">Verify Code</button></td>
-                    <td><button name="rejectButton" type="button"class=" open-rejectDialog btn btn-danger" data-id="<%=codeVerify[i].name %>" data-lang="<%=codeVerify[i].language %>">Reject Code</button></td>
+
 
 
                     <div  id="profilebox" class="modal fade" role="dialog" aria-hidden="true">
@@ -45,7 +44,8 @@
                                     <p id="codearea" style="word-wrap: break-word"> </p>
                                 </div>
                                  <div class="modal-footer">
-                                      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                   <button name="verifyButton" type="button" class="open-verifyDialog btn btn-success" data-id="<%=codeVerify[i].name %>" data-lang="<%=codeVerify[i].language %>"data-code="<%= codeVerify[i].code %>">Verify Code</button>
+                                   <button name="rejectButton" type="button"class=" open-rejectDialog btn btn-danger" data-id="<%=codeVerify[i].name %>" data-lang="<%=codeVerify[i].language %>">Reject Code</button>
                                 </div>
                             </div>
                         </div>

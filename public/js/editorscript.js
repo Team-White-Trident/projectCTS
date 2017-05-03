@@ -173,3 +173,16 @@ function reset(){
   }
 
 }
+
+$(document).on("click", "#giveSuggestion", function () {
+
+
+          var idee = ($('.nav-tabs .active').text()).toLowerCase().trim();
+          var madeid = (idee+"language").trim();
+
+          var templateSelect = document.getElementById((madeid));
+          var selectedText = templateSelect.options[templateSelect.selectedIndex].text;
+        //  alert(selectedText);
+          localStorage.setItem('selectedText',selectedText);
+
+});

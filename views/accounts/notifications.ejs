@@ -1,16 +1,20 @@
 <% layout('layout') -%>
 
-<head>
+
   <script src="/js/jquery.min.js"></script>
    <script src="/js/profilePage.js" type="text/javascript" charset="utf-8"></script>
    <script>
    $.post("/notifications",{});
-
+   setTimeout(function ()
+       {   //alert("hello");
+           if (self.name != '_refreshed_'){
+           self.name = '_refreshed_';
+           self.location.reload(true);
+       } else {
+           self.name = '';
+       }
+     }, 3000);
    </script>
-
-
-
-</head>
 
 <div class="container">
 
@@ -27,12 +31,14 @@
       <tbody>
 
           <tr>
-            <% for( var j=user.notifications.length-1; j>=0;j--) { %>
+            <% for( var j=user.notifications.length-1; j>=0;j--) {
+              var date=user.notifications[j]._id.getTimestamp();
+              %>
 
 
              <td><a type="button" class="open-profileDialog btn" data-toggle="modal" data-id="<%= user.notifications[j].notificationName%>" data-code="<%= user.notifications[j].description%>" href="#notificationBox"><%= user.notifications[j].notificationName%></a></td>
                   <td><%= user.notifications[j].creator%> (<%=user.notifications[j].creatorEmail %>)</td>
-                <td><%= user.notifications[j]._id.getTimestamp() %></td>
+                <td id="timestamp"><%= date %> </td>
 
                 <div  id="notificationBox" class="modal fade" role="dialog" aria-hidden="true">
                     <div class="modal-dialog">

@@ -1,5 +1,5 @@
 <% layout('layout') -%>
-
+<%if(!user){%>
 <div class = "jumbotron">
          <div class = "container-fluid full-j">
                 <div class = "row row-header">
@@ -30,8 +30,8 @@
 
     </div>
     </div>
-     
-     
+
+
     <div class="row">
       <div class = "col-xs-12 col-sm-12 wow bounceInLeft">
       <h2  class="mid" style="font-size:70px;  font-family: 'Bubbler One', sans-serif; color:rgba(255,255,255)">
@@ -41,7 +41,7 @@
        <p class="mid" style="font-size:50px;  font-family: 'Bubbler One', sans-serif; color:rgba(255,255,255)">Coditec is the online web editor app helps you to code fast by providing coding templates for various common tasks.</p>
      </div>
     </div>
-    
+
      <div class="col-xs-12" style="margin:0px 0px 30px 0px">
           <div id="mycarousel" class="carousel slide" data-ride="carousel">
                <!-- Wrapper for slides -->
@@ -76,59 +76,59 @@
               </div>
 
           </div>
-           
+
           </div>
-     
-     
-     
-     
-     
-    
-     
+
+
+
+
+
+
+
      <div id="languages">
      </div>
-     
+
        <div class="row">
             <div class="col-sm-12 mid wow fadeInUp">
                 <p style="font-size:40px; font-family: 'Bubbler One', sans-serif;"><strong>Provided Languages</strong></p>
             </div>
-                              
+
               <div class="col-sm-8 col-md-offset-2">
                              <div style=" margin:40px 0px 0px 0px;"class="row"  data-wow-delay="0.5s" data-wow-offset="100">
-                        
+
                               <div class="col-sm-3 col-sm-offset-0 wow flipInY" data-wow-delay="0.8s">
                                   <img src="/img/CICON.png"  style="box-shadow: 0px 0px 40px #888888;  border-radius: 2px;" class="img-responsive">
                               </div>
                               <div class="col-sm-3 col-sm-offset-0 wow flipInY" data-wow-delay="0.8s">
                                   <img src="/img/CppICON.png"  style=" margin:0px 0px 0px 0px;box-shadow: 0px 0px 40px #888888;  border-radius: 2px;" class="img-responsive">
-                              </div>   
+                              </div>
                               <div class="col-sm-3 col-sm-offset-0 wow flipInY" data-wow-delay="0.8s">
                                   <img src="/img/java.png"  style=" margin:0px 0px 0px 0px;box-shadow: 0px 0px 40px #888888;  border-radius: 2px;" class="img-responsive">
                               </div>
                               <div class="col-sm-3 col-sm-offset-0 wow flipInY" data-wow-delay="0.8s">
                                   <img src="/img/python.png"  style=" margin:0px 0px 0px 0px;box-shadow: 0px 0px 40px #888888;  border-radius: 2px;" class="img-responsive">
                               </div>
-                        
+
                               </div>
                               </div>
-           </div>  
-     
-     
-     
-     
-     
-     
-     
-     
+           </div>
+
+
+
+
+
+
+
+
      <div id="explore">
      </div>
-     
-     
+
+
     <div class="row" style="margin:50px 0px 50px 0px;">
     <div class="col-sm-1">
-    </div>     
+    </div>
     <div class="col-sm-10  wow fadeInUp" style="margin:0px 0px 0px 0px;">
-        <h3 class="mid" style="font-size:50px; font-family: 'Bubbler One', sans-serif;"><strong> Explore Coditec</strong></h3>  
+        <h3 class="mid" style="font-size:50px; font-family: 'Bubbler One', sans-serif;"><strong> Explore Coditec</strong></h3>
            <p style="font-size:30px; font-family: 'Bubbler One', sans-serif;">
             Coditec provides two types of profile to its users. Developers and others you can sign up
             with others account and just start using the app but to provide your custom template to the template bar you need to have a developer account.
@@ -142,14 +142,25 @@
             <p style="font-size:30px; font-family: 'Bubbler One', sans-serif;">For Developers:</p>
             <ul style="font-size:30px; font-family: 'Bubbler One', sans-serif;">
             <li>All the features available to Regular User are available to Developer account.</li>
-                
+
             <li><strong>Additionally,</strong> Developers can submit their coding templates to the admin for review if they pass the review then their template will be added in template bar.</li>
             </ul>
         </div>
         <div class="col-sm-1">
     </div
     </div>
-     
+
       </div>
 </div>
 
+<% }else if(user.email=="teamwhitetrident@gmail.com")
+{ %>
+<script type="text/javascript">
+          window.location.href = "/adminHome"
+      </script>
+<%}else{%>
+  <script type="text/javascript">
+            window.location.href = "/aceEditor"
+        </script>
+
+<%}%>
