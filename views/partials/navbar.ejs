@@ -16,8 +16,20 @@ for(var i=0;i<user.notifications.length;i++)
     </div>
   <div id="navbar" class="navbar-collapse collapse">
     <ul class="nav navbar-nav">
+      <%  if(!user){  %>
                      <li><a  href="/"><span class="glyphicon glyphicon-home"
                          aria-hidden="true"></span> Home</a></li>
+                <%}else if(user.email=="teamwhitetrident@gmail.com"){ %>
+
+                  <li><a  href="/adminHome"><span class="glyphicon glyphicon-home"
+                      aria-hidden="true"></span> Admin Home</a></li>
+
+                  <% }else{%>
+
+                    <li><a  href="/aceEditor"><strong><i class="fa fa-code"
+                        aria-hidden="true"></i>  Editor</strong></a></li>
+
+                    <%}%>
                      <li><a href="/about">
                         <span class="glyphicon glyphicon-info-sign"
                          aria-hidden="true"></span> About</a></li>
@@ -33,7 +45,6 @@ for(var i=0;i<user.notifications.length;i++)
     <li>  <a href="/notifications"><i class = "fa fa-bell-o"></i><span style="display:none" id="notificationsBadge"  class="badge"> <%=count%></span></a></li>
    <li><a id="ausername" style="color:#fff" class="dropdown-toggle" data-toggle="dropdown" href="#"><%= user.profile.name+ " " %><span class="caret"></span></a>
        <ul class="dropdown-menu">
-          <li><a href="/adminHome">Admin Home</a></li>
           <li><a href="/addNotification">Notify Users</a></li>
           <li><a href="/add-template">Add template</a></li>
           <li><a href="/add-language">Add Language</a></li>
@@ -80,7 +91,6 @@ for(var i=0;i<user.notifications.length;i++)
 
 <ul class="dropdown-menu">
   <li><a href="/profile">Profile</a></li>
-   <li><a href="/aceEditor">Editor</a></li>
    <li><a  href="/add-code">Add Templates</a></li>
     <li><a href="/logout">Logout</a></li>
 </ul>

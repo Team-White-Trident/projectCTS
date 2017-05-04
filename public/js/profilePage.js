@@ -1,12 +1,10 @@
-setTimeout(function ()
-    {
-        if (self.name != '_refreshed_'){
-        self.name = '_refreshed_';
-        self.location.reload(true);
-    } else {
-        self.name = '';
-    }
-  }, 4000);
+// $(function() {
+//   alert("hello");
+//   var date= $("td#timestamp").value();
+//   alert(date);
+//
+// });
+
 $(document).on("click", ".open-profileDialog", function () {
      var contentId = $(this).data('id');
      var contentCode = $(this).data('code');
@@ -22,6 +20,8 @@ $(document).on("click", ".open-profileDialog", function () {
 
 
 });
+
+
 
 function changeprofile(){
   $.post("/changeprofile",{})
