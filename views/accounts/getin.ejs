@@ -1,31 +1,62 @@
 <% layout('layout') -%>
 <script type="text/javascript">
-function validateForm(form) {
+var nameok=0,emailok=0,passwordok=0;
+ var checkname=function () {
 
  var letters = /^[A-Z a-z]+$/;
- var ln = form.name.value;
+ var ln = document.getElementById('flname').value;
  if (!ln.match(letters)) {
-     alert("Please ener a valid name");
-     return false;
+   nameok=0;
+    document.getElementById('msg1').hidden=false;
+     document.getElementById('msg1').innerHTML="Enter Valid Name";
+ }else{
+      //alert('hope this will work');
+   document.getElementById('msg1').hidden=true;
+   nameok=1;
  }
+ }
+var checkemail= function(){
 var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[09]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-  var email = form.email.value;
+  var email = document.getElementById('eemail').value;
  if(!re.test(email)){
-     alert(" please enter correct Email ID!!");
-     return false;
+   emailok=0;
+   document.getElementById('msg2').hidden=false;
+    document.getElementById('msg2').innerHTML= " Enter correct Email ID!!";
+ }else{
+   emailok=1;
+   document.getElementById('msg2').hidden=true;
  }
+}
+var checkpasswords = function(){
+  var pass1 = document.getElementById('pass1').value;
+  var pass2 = document.getElementById('pass2').value;
+if(pass1 == pass2&&pass1!=""&&pass2!="")
+  { passwordok=1;
+    document.getElementById('msg3').style.color = "#00ff00";
+    document.getElementById('msg3').innerHTML="Password  match!";
 
-  var pass1 = form.password.value;
-  var pass2 = form.password2.value;
-if(pass1 == pass2)
-  {
-
-    return true;
   }else{
-      alert("Password do not match!");
-      return false;
+    passwordok=0;
+      document.getElementById('msg3').style.color = "#ff0000";
+      document.getElementById('msg3').innerHTML="Password do not match!";
+
   }
 
+}
+function checkstatus(){
+  if(nameok&&passwordok&&emailok){
+    return true;
+  }else {
+    if(nameok==0) $("#flname").focus();
+    else if(emailok==0){
+        $("#eemail").focus();
+      }
+    else if (passwordok==0) {
+       $("#pass2").focus();
+    }
+    //alert("Correct your credentials!");
+    return false;
+  }
 }
 </script>
 <head>
@@ -80,13 +111,14 @@ if(pass1 == pass2)
         <div id="signup">
           <h1>Sign Up for Free</h1>
 
-          <form onsubmit="return validateForm(this)" action="/signup" name="regForm" method="post">
+          <form onsubmit="return checkstatus()"  action="/signup" name="regForm" method="post">
 
           <div class="field-wrap">
               <label class="label">
                 Full Name<span class="req">*</span>
               </label>
-              <input class="input" id="flname"  name ="name" type="text" required autocomplete="off" />
+              <input class="input" id="flname"  name ="name" type="text" required autocomplete="off" onkeyup="checkname()" />
+              <span  class="errormessage" id="msg1"></span>
             </div>
           <div class="top-row">
             <div class="field-wrap">
@@ -103,25 +135,27 @@ if(pass1 == pass2)
             <label class="label">
               Email Address<span class="req">*</span>
             </label>
-            <input class="input" id="eemail" name ="email" type="email"required autocomplete="off"/>
+            <input class="input" id="eemail" name ="email" type="text" required autocomplete="off" onkeyup="checkemail()"/>
+            <span class="errormessage" id="msg2"></span>
           </div>
 
           <div class="field-wrap">
             <label class="label">
               Set A Password<span class="req">*</span>
             </label>
-            <input class="input"  id="pass" name= "password" type="password"required autocomplete="off"/>
+            <input class="input"  id="pass1" name= "password" type="password"required autocomplete="off" onkeyup="checkpasswords()"/>
           </div>
 
           <div class="field-wrap">
             <label class="label">
               Confirm Password<span class="req">*</span>
             </label>
-            <input id="pass2" name= "password2" class="input" type="password"required autocomplete="off"/>
+            <input id="pass2" name= "password2" class="input" type="password"required autocomplete="off" onkeyup="checkpasswords()"/>
+            <span class="errormessage" id="msg3"></span>
           </div>
 
 
-          <button type="submit" class="button button-block" >Get Started</button>
+          <button type="submit"  class="button button-block" >Get Started</button>
 
           </form>
 

@@ -4,6 +4,8 @@ var Template = require('../models/template');
 var Language = require('../models/language');
 var CodeVerify = require('../models/codestoverify');
 var Userstochange = require('../models/userstochange');
+var Question = require('../models/questionnaire')
+
 
 router.get('/adminHome',function(req,res)
 {
@@ -126,4 +128,27 @@ router.post('/add-template',function(req,res,next){
     return res.redirect('/add-template');
   });
 });
+
+router.get('/addQuestion',function(req,res)
+{
+  res.render('admin/addQuestion');
+});
+
+router.post('/addQuestion',function(req,res,next){
+  var question = new Question();
+  question.name = req.body.name;
+  question.option1 = req.body.option1;
+  question.option2 = req.body.option2;
+  question.option3 = req.body.option3;
+  question.option4 = req.body.option4;
+  question.answer =  req.body.answer;
+
+  question.save(function(err){
+    if(err) return next(err);
+    req.flash('success','Successfully added a question');
+    return res.redirect('/addQuestion');
+  });
+});
+
+
 module.exports = router;

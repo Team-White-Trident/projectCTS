@@ -82,7 +82,10 @@ router.get('/logout',function(req,res,next)
 req.logout();
 res.redirect('/');
 });
-
+router.get('/question',function(req,res)
+{
+  res.render('accounts/question');
+});
 
 router.post('/savehistory',function(req,res,next)
 {

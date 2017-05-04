@@ -1,0 +1,41 @@
+<% layout('layout') -%>
+
+
+<script src="/js/jquery.min.js"></script>
+<script src="/js/questionnaire.js" type="text/javascript" charset="utf-8"></script>
+<div class="row">
+  <div class="col-lg-6 col-md-offset-3">
+
+      <h1> Answer the Question </h1>
+
+
+    <div class="form-group">
+      <% for(var i=0; i<questions.length;i++) { %>
+    <label  class="form-control" data-id="<%= questions[i]._id%>"  id="question<%=i%>" ><strong>Q.</strong><%=questions[i].name %></label>
+      <input type="radio" name="option<%=i%>" value="<%=questions[i].option1 %>"><%=questions[i].option1 %><br>
+ <input type="radio" name="option<%=i%>" value="<%=questions[i].option2 %>"><%=questions[i].option2 %> <br>
+ <input type="radio" name="option<%=i%>" value="<%=questions[i].option3 %>"><%=questions[i].option3 %><br/>
+ <input type="radio" name="option<%=i%>" value="<%=questions[i].option4 %> "><%=questions[i].option4 %><br/><br/>
+
+
+    <% }%>
+    </div>
+        <button id="submittest" data-length="<%=questions.length%>" class="btn btn-success">Submit</button>
+        <div  id="feedback" class="modal fade" role="dialog" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div style="background: #088DA5;color:#fff" class="modal-header">
+                            <b>Message</b>
+                    </div>
+                     <div class="modal-body">
+                       <p id="statusofsubmit">S</p>
+
+                    </div>
+                     <div class="modal-footer">
+                          <button type="button" class="btn btn-default" onclick="redirect()">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+  </div>
+</div>

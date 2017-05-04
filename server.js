@@ -17,6 +17,7 @@ var Language = require('./models/language');
 var Template = require('./models/template');
 var CodeVerify = require('./models/codestoverify');
 var Userstochange = require('./models/userstochange');
+var Question =  require('./models/questionnaire')
 
 mongoose.connect(secret.database ,function(err)
 {
@@ -97,6 +98,14 @@ app.use(function(req,res,next)
 
   next();
 });
+});
+
+app.use(function(req,res,next){
+    Question.find({},function(err,questions){
+      if(err)return next(err);
+      res.locals.questions = questions;
+      next();
+    });
 });
 
 

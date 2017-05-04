@@ -19,6 +19,12 @@ footer{
     bottom: 0;
 }
 
+.errormessage{
+  color:#ff4040;
+  font-size: 13;
+  float: right;
+
+}
 
 #profilepic-small {
   width: 40px;
