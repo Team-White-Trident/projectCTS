@@ -102,10 +102,8 @@ li:hover span.hov{
 
 .mid{
     text-align: center;
-vertical-align: middle;
-
-
-}
+    vertical-align: middle;
+    }
 .btn-primary{
     background:#088DA5;
 }
