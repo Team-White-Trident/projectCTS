@@ -11,11 +11,11 @@
 
     <div class="form-group">
       <% for(var i=0; i<questions.length;i++) { %>
-    <label  class="form-control" data-id="<%= questions[i]._id%>"  id="question<%=i%>" ><strong>Q.</strong><%=questions[i].name %></label>
-      <input type="radio" name="option<%=i%>" value="<%=questions[i].option1 %>"><%=questions[i].option1 %><br>
- <input type="radio" name="option<%=i%>" value="<%=questions[i].option2 %>"><%=questions[i].option2 %> <br>
- <input type="radio" name="option<%=i%>" value="<%=questions[i].option3 %>"><%=questions[i].option3 %><br/>
- <input type="radio" name="option<%=i%>" value="<%=questions[i].option4 %> "><%=questions[i].option4 %><br/><br/>
+    <label  class="form-control" data-id="<%= questions[i]._id%>"  id="question<%=i%>" ><%=questions[i].name %></label>
+    <label > <input type="radio" name="option<%=i%>" value="<%=questions[i].option1 %>"><%=questions[i].option1 %></label><br>
+    <label > <input type="radio" name="option<%=i%>" value="<%=questions[i].option2 %>"><%=questions[i].option2 %></label> <br>
+    <label > <input type="radio" name="option<%=i%>" value="<%=questions[i].option3 %>"><%=questions[i].option3 %></label><br/>
+    <label > <input type="radio" name="option<%=i%>" value="<%=questions[i].option4 %> "><%=questions[i].option4 %></label><br/><br/>
 
 
     <% }%>
