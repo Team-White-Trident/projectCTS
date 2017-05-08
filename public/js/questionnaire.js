@@ -9,10 +9,14 @@ $(document).on('click','button#submittest',function(){
         answers[i]=answer;
         ids[i]=$("label#question"+i).data("id");
     }
+      $('#feedback').modal({backdrop: 'static', keyboard: false});
+        $('#feedback').modal('show');
+           $("#statusofsubmit").html("Please wait !");
         $.post('/matchanswer',{answers:answers,ids:ids,numberofquestions:length},function(){ },"json")
         .done(function(data){
                     $('#feedback').modal('show');
                      $("#statusofsubmit").html(data.status);
+
         })
         .fail(function(){
           alert("Please attempt all questions");

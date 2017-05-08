@@ -122,6 +122,7 @@ router.route('/addNotification')
   })
    .post(function(req,res,next){
         var i=0;
+        console.log("woring on server");
        User.find({}, function(err,user)
        {
           if(err) return next(err);
@@ -142,8 +143,7 @@ router.route('/addNotification')
             }
           }
           if(i==user.length){
-            req.flash('success','Broadcasted!');
-            return res.redirect('/addNotification');
+            res.send({status:"Successfully Notified."});
           }
        });
      });
