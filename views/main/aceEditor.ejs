@@ -4,13 +4,17 @@
     <script src="/js/jquery.min.js"></script>
 
   </head>
-
  <div class="container">
+   <%if(!user){%>
+      <div class="mid">
+       <a href="/getin" class="btn btn-warning btn-lg" style="margin:10px">Signup now for more features!!</a>
+      </div>
+      <%}%>
       <div class="row row-content" style="margin:30px 0px 0px 0px">
            <div class="btn-group pull-right" style="margin:0px 25px 0px 0px;">
           <button class="button btn btn-primary btn-sm" onclick="compile()"><span class="glyphicon glyphicon-th-large"></span> Compile</button>
           <button class="button btn btn-primary btn-sm" onclick="run()"><span class="glyphicon glyphicon-play"></span> Run</button>
-               <button class="button btn btn-primary btn-sm" onclick="saveTextAsFile()"><span class="glyphicon glyphicon-cloud-download"></span> Download Code</button>
+            <%if(user){%>   <button class="button btn btn-primary btn-sm" onclick="saveTextAsFile()"><span class="glyphicon glyphicon-cloud-download"></span> Download Code</button><%}%>
             <button onclick="reset()" class="btn btn-primary btn-sm"><i class="fa fa-refresh"></i> Reset</button>
 
           </div>
@@ -38,23 +42,44 @@
             <div role="tabpanel" class="tab-pane fade in active" id="c" value="C">
               <select   data-live-search="true"  class="form-control selectpicker" name="ctype" id="clanguage" onchange="handleDD()">
              <option value="">Select Code Template</option>
-            <% for(var i=0; i<templates.length;i++) {
-              if(templates[i].language.toLowerCase()=='c'){ %>
+            <% var loop=0;
+
+            for(var i=0; i<templates.length;i++) {
+              if(templates[i].language.toLowerCase()=='c')
+              {
+                      if(loop==4&&!user)
+                      {
+                          break;
+                      }
+                %>
             <option value="<%= templates[i].code %>" id="<%= templates[i]._id %>"><%= templates[i].name %></option>
 
-            <% }
+            <% loop++; }
           } %>
+          <%if(!user){%>
+            <option disabled value="">signup for more templates...</option>
+            <%}%>
               </select>
 
             </div>
            <div role="tabpanel" class="tab-pane fade " id="cpp" value="CPP" >
              <select  name="cpptype" data-live-search="true"  class="form-control selectpicker" id="cpplanguage" onchange="handleDD()" >
                           <option value="">Select Code Template</option>
-             <% for(var i=0; i<templates.length;i++) {
-               if(templates[i].language.toLowerCase()=='cpp'){ %>
+             <% var loop=0;
+              for(var i=0; i<templates.length;i++) {
+               if(templates[i].language.toLowerCase()=='cpp'){
+                 if(loop==4&&!user)
+                 {
+                     break;
+                 }
+
+                  %>
              <option value="<%= templates[i].code %>" id="<%= templates[i]._id %>"><%= templates[i].name %></option>
-             <% }
+             <% loop++; }
            } %>
+           <%if(!user){%>
+             <option disabled value="">signup for more templates...</option>
+             <%}%>
              </select>
 
 
@@ -62,28 +87,51 @@
         <div role="tabpanel" class="tab-pane fade " id="java" value="JAVA">
               <select name="jtype" data-live-search="true"  class="form-control selectpicker" id="javalanguage" onchange="handleDD()">
               <option value="">Select Code Template</option>
-            <% for(var i=0; i<templates.length;i++) {
-              if(templates[i].language.toLowerCase()=='java'){ %>
+            <% var loop=0;
+            for(var i=0; i<templates.length;i++) {
+              if(templates[i].language.toLowerCase()=='java'){
+
+                if(loop==4&&!user)
+                {
+                    break;
+                }
+
+
+                %>
             <option value="<%= templates[i].code %>" id="<%= templates[i]._id %>"><%= templates[i].name %></option>
-            <% }
+            <% loop++;}
           } %>
+          <%if(!user){%>
+            <option disabled value="">signup for more templates...</option>
+            <%}%>
             </select>
 
             </div>
             <div role="tabpanel" class="tab-pane fade " id="python" value="PYTHON">
               <select name="ptype" data-live-search="true"  class="form-control selectpicker" id="pythonlanguage" onchange="handleDD()">
               <option value="">Select Code Template</option>
-              <% for(var i=0; i<templates.length;i++) {
-                if(templates[i].language.toLowerCase()=='python'){ %>
+              <% var loop=0;
+                for(var i=0; i<templates.length;i++) {
+                if(templates[i].language.toLowerCase()=='python'){
+                  if(loop==4&&!user)
+                  {
+                      break;
+                  }
+
+                   %>
               <option value="<%= templates[i].code %>" id="<%= templates[i]._id %>"><%= templates[i].name %></option>
-              <% }
+              <% loop++; }
             }%>
+            <%if(!user){%>
+              <option disabled value="">signup for more templates...</option>
+              <%}%>
               </select>
 
 
             </div>
-
+ <% if(user){%>
              <a id="giveSuggestion" href="/addNotification" style="margin:430px 0 0 230px" class="btn btn-warning btn-sm" >Give Suggestions</a>
+             <%}%>
          </div>
           </div>
 
@@ -93,7 +141,6 @@
           </div>
       </div>
 </div>
-
  <script> $(".button").click(function() {
     $('html,body').animate({
         scrollTop: $(".second").offset().top},

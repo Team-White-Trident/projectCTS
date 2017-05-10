@@ -8,7 +8,7 @@ var passportConf = require('../config/passport');
 router.route('/getin')
     .get(function(req,res)
     {
-    //  if(req.user) return res.redirect('/');
+     if(req.user) res.redirect('/aceEditor');
       res.render('accounts/getin', {message:req.flash('loginMessage'),errors: req.flash('errors')});
     });
 

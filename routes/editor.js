@@ -39,7 +39,7 @@ router.post("/run",function(req,res){
 });
 router.get('/aceEditor',function(req,res)
 {
- if(!req.user) return res.redirect('/');
-else  res.render('main/aceEditor');
+ 
+    res.render('main/aceEditor');
 });
 module.exports = router;
