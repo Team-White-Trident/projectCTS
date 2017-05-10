@@ -161,6 +161,13 @@ line-height: 100px;
    overflow:hidden !important;
    text-overflow: ellipsis;
 }
+.stopflow2{
+  display:inline-block;
+   width:34.4%;
+   white-space: nowrap;
+   overflow:hidden !important;
+   text-overflow: ellipsis;
+}
 .row-footer{
     background-color: #051923;
     margin:0px auto;
