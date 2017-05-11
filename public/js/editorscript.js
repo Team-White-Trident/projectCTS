@@ -8,6 +8,7 @@ var tracker = {
 
 
 var editor = ace.edit("editor");
+editor.$blockScrolling = Infinity;
 document.getElementById('editor').style.fontSize='16px';
 
  editor.setTheme("ace/theme/monokai");
@@ -61,7 +62,6 @@ function compile() {
 var value = $('.nav-tabs .active').text().trim();
         $.post("/compile", {code: session.getValue(), language:value})
             .done(function(data) {
-                console.log("hell");
                 $("#output-container").text("Compile status: " + JSON.parse(data).compile_status);
             })
             .fail(function(data) {
@@ -185,4 +185,7 @@ $(document).on("click", "#giveSuggestion", function () {
         //  alert(selectedText);
           localStorage.setItem('selectedText',selectedText);
 
+});
+$(document).on("click","button#checkmissing",function(){
+    $('#checkmissingmodal').modal("show");
 });

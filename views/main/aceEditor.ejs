@@ -7,7 +7,29 @@
  <div class="container">
    <%if(!user){%>
       <div class="mid">
-       <a href="/getin" class="btn btn-warning btn-lg" style="margin:10px">Signup now for more features!!</a>
+        <button id="checkmissing" class="btn  btn-lg" style="margin:10px; color:#fff">Checkout what you are missing</button>
+        <a href="/getin" class="btn btn-warning btn-lg" style="margin:10px">Signup now for more features!!</a>
+      </div>
+      <div  id="checkmissingmodal" class="modal fade" role="dialog" aria-hidden="true">
+          <div class="modal-dialog">
+              <div class="modal-content">
+                  <div style="background: #088DA5;color:#fff" class="modal-header">
+                          <b>You are missing</b>
+                  </div>
+                   <div style="color:#ffa500" class="modal-body">
+                     <ul>
+                       <li><h3>A lot of templates.</h3></li>
+                       <li><h3>Download code on your machine.</h3></li>
+                       <li><h3>Got a better approach? Give suggestions for any template.</h3></li>
+                       <li><h3>If you are developer, contribute with your code snippets.</h3></li>
+                   </ul>
+
+                  </div>
+                   <div class="mid modal-footer">
+                        <a href="/getin" type="button" class="btn btn-primary">Signup</a>
+                  </div>
+              </div>
+          </div>
       </div>
       <%}%>
       <div class="row row-content" style="margin:30px 0px 0px 0px">
