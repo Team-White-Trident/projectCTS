@@ -50,7 +50,7 @@ function myfunc(){
   }
 	if(btn.id=="python__"){
 	editor.setValue(tracker.python);
-  editor.getSession().setMode("ace/mode/java");
+  editor.getSession().setMode("ace/mode/python");
   editor.gotoLine(editor.session.getLength());
 
   }
