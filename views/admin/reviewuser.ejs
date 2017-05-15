@@ -1,7 +1,7 @@
 <% layout('layout') -%>
 
 <head>
-   <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+   <script src="/js/jquery.min.js"></script>
    <script src="/js/verifyUser.js" type="text/javascript" charset="utf-8"></script>
    <script src="/js/profilePage.js" type="text/javascript" charset="utf-8"></script>
 </head>
@@ -32,7 +32,22 @@
 
          <%
        } %>
+       <div  id="verifyUserfeedback" class="modal fade" role="dialog" aria-hidden="true">
+           <div class="modal-dialog">
+               <div class="modal-content">
+                   <div style="background: #088DA5;color:#fff" class="modal-header">
+                           <b>Message</b>
+                   </div>
+                    <div class="modal-body">
+                      <p id="statusofApprovement">S</p>
 
+                   </div>
+                    <div id="modal-footer"  class="modal-footer">
+                         <button type="button" class="btn btn-default" onclick="redirect()">Close</button>
+                   </div>
+               </div>
+           </div>
+       </div>
 
 
        </tbody>

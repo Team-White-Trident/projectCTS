@@ -183,6 +183,9 @@ $(document).on("click", "#giveSuggestion", function () {
           var templateSelect = document.getElementById((madeid));
           var selectedText = templateSelect.options[templateSelect.selectedIndex].text;
         //  alert(selectedText);
+        if(selectedText=="Select Code Template"){
+          alert("Please select any template before giving suggestions");
+          return false;}
           localStorage.setItem('selectedText',selectedText);
 
 });

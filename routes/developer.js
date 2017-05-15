@@ -45,7 +45,7 @@ asyncLoop(0,function(){
     else{
       userstochange.save(function(err){
         if(err) return err;
-        res.send({status:'Successfully requested to addmin! Please wait till Reviewed'});
+        res.send({status:'Successfully requested to admin! Please wait till Reviewed'});
 
     });
   }

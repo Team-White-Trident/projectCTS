@@ -24,7 +24,7 @@ $(document).on("click", ".open-profileDialog", function () {
 
 
 function changeprofile(){
-  $.post("/changeprofile",{})
+  $.post("/changeprofile",{},function(){},"json")
        .done(function(data) {
               alert("Successfully Applied! Wait till approvement");
          })

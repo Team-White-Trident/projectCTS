@@ -39,10 +39,11 @@ router.route('/reviewuser')
       if(err) return err;
       else{
         console.log(req.body.email+"Removed");
+        res.send({status:req.body.email+" is now a developer."});
       }
     });
   });
-  res.redirect('/reviewuser');
+
 });
 
 router.route('/rejectuser')
@@ -52,10 +53,9 @@ router.route('/rejectuser')
     if(err) next (err);
     else{
       console.log(req.body.email+"Removed");
-
+      res.send({status:req.body.email+" rejected."})
     }
   });
-    res.redirect('/reviewuser');
 });
 
 
@@ -131,7 +131,11 @@ router.post('/add-template',function(req,res,next){
 
 router.get('/addQuestion',function(req,res)
 {
+  if(req.user.email=='teamwhitetrident@gmail.com')
   res.render('admin/addQuestion');
+  else {
+    res.redirect('/aceEditor');
+  }
 });
 
 router.post('/addQuestion',function(req,res,next){
