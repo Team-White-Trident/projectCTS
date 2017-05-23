@@ -37,7 +37,6 @@ router.route('/signup')
     .post(function(req,res,next)
       {
         var user = new User();
-        user.role = req.body.role;
         user.profile.name = req.body.name;
         user.password = req.body.password;
         user.email = req.body.email;
@@ -57,7 +56,11 @@ router.route('/signup')
 
                 req.logIn(user,function(err){
                   if(err) next(err);
-                  res.redirect('/aceEditor');
+                  if(req.body.role=='others'){
+                    res.redirect('/aceEditor');
+                  }else{
+                    res.redirect('/question')
+                  }
                 });
              });
            }

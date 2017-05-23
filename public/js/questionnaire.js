@@ -24,5 +24,5 @@ $(document).on('click','button#submittest',function(){
 
 });
 function redirect(){
-  window.location.href = "/profile";
+  window.location.href = "/aceEditor";
 }
