@@ -25,6 +25,7 @@ var UserSchema = new Schema({
    creatorEmail: String,
    notificationName: String,
   description: String,
+  ncode:{ type:String, default:'' },
   read: { type:Boolean, default : false}
 }],
 projects:[{

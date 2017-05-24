@@ -8,6 +8,7 @@
 $(document).on("click", ".open-profileDialog", function () {
      var contentId = $(this).data('id');
      var contentCode = $(this).data('code');
+     var nCode = $(this).data('ncode');
     // var contentLang = $(this).data('lang').trim();
 
     $(".modal-header").html(contentId.bold());
@@ -16,6 +17,7 @@ $(document).on("click", ".open-profileDialog", function () {
     //$(".modal-body #modalbody").html( contentWhatever );
 
      $("#codearea").html(contentCode);
+     $("#codearea2").html(nCode);
      //$( "#test" ).load( "../../ #test" );
 
 

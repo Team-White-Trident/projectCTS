@@ -129,7 +129,7 @@ router.route('/addNotification')
    .post(function(req,res,next){
         var i=0;
         console.log("woring on server");
-       User.find({}, function(err,user)
+         User.find({}, function(err,user)
        {
           if(err) return next(err);
           for(i=0;i<user.length;i++){
@@ -138,7 +138,8 @@ router.route('/addNotification')
                 creator:req.user.profile.name,
                 creatorEmail:req.user.email,
                 notificationName: req.body.topic,
-                description:req.body.description
+                ncode: req.body.ncode,
+                description:req.body.description,
               });
               user[i].save(function(err, user){
                 if(err) next(err);

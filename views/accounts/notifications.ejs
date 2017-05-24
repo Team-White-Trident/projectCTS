@@ -3,6 +3,9 @@
 
   <script src="/js/jquery.min.js"></script>
    <script src="/js/profilePage.js" type="text/javascript" charset="utf-8"></script>
+   <link href="/css/monokai.css" rel="stylesheet" type="text/css">
+   <script src="/js/languages/rainbow-custom.min.js" type="text/javascript" charset="utf-8" ></script>
+
    <script>
    $.post("/notifications",{});
    setTimeout(function ()
@@ -36,7 +39,7 @@
               %>
 
 
-             <td><a type="button" class="open-profileDialog btn" data-toggle="modal" data-id="<%= user.notifications[j].notificationName%>" data-code="<%= user.notifications[j].description%>" href="#notificationBox"><%= user.notifications[j].notificationName%></a></td>
+             <td><a type="button" class="open-profileDialog btn" data-toggle="modal" data-id="<%= user.notifications[j].notificationName%>" data-code="<%= user.notifications[j].description%>" data-ncode="<%= user.notifications[j].ncode %>" href="#notificationBox"><%= user.notifications[j].notificationName%></a></td>
                   <td><%= user.notifications[j].creator%> (<%=user.notifications[j].creatorEmail %>)</td>
                 <td id="timestamp"  class="stopflow2"><%= date %> </td>
 
@@ -49,7 +52,16 @@
                             </div>
                              <div class="modal-body">
                                 <p id="codearea" style="word-wrap: break-word;"> </p>
-                            </div>
+                                
+                                 <pre id = 'test'>
+                                   <code id="codearea2"  data-language="c">
+
+                                 </code>
+                               </pre>
+
+
+                                </p>
+                           </div>
                              <div class="modal-footer">
                                   <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                             </div>

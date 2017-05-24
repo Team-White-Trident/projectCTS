@@ -15,7 +15,7 @@
       <img class="img-circle img-responsive img-center" src="<%= user.profile.picture %>" alt ="">
 
       <br/>
-      <h4>Name: <%= user.profile.name %></h4>
+      <h4>Name: <%= user.profile.name %><% if(user.role!="others"){%><strong> (Developer)</strong><%}%></h4>
       <h4> Email: <%= user.email %></h4>
     </div>
 
